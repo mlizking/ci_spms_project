@@ -15,7 +15,7 @@
             <?php echo form_open('userlogin_controller'); ?> 
             <!-- Form -->
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" name="loginemail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo set_value('loginemail'); ?>" required>
                     <?php echo form_error('loginemail'); ?>
                 </div>
