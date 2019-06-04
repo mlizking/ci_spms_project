@@ -44,7 +44,7 @@ class Userlogin_controller extends CI_Controller {
                 $this->load->model('login_model');
                 if($this->login_model->can_login($email, $password))
                 {
-    
+                    //select ข้อมูล
                     $query2 = $this->db->query('SELECT * FROM users WHERE u_email = "'.$email.'"');
                     foreach ($query2->result_array() as $row)
                     {
