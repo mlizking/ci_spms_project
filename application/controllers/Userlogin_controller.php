@@ -18,4 +18,9 @@ class Userlogin_controller extends CI_Controller {
             }
                 
         }
+
+        public function gg()
+        {
+            $this->load->view('sample_view');
+        }
 }

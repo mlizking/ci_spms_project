@@ -7,7 +7,7 @@
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
     <center>
-    <div class="card text-center w-50 border-dark mb-10 mt-3">
+    <div class="card text-center border-dark mt-5 ml-5 mr-5">
         <div class="card-header">
             Sign-in
         </div>
