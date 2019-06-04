@@ -10,7 +10,7 @@
 </head>
 <body>
   <?php 
-    if($_SESSION['statusid'] != '1')
+    if($this->session->userdata('statusid') != '1')
       {   
         redirect(site_url('home_controller'));
       } 

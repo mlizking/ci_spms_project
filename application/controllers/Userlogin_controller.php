@@ -107,7 +107,10 @@ class Userlogin_controller extends CI_Controller {
 
         function logout()
         {
-            $this->session->unset_userdata('email');
+            //$this->session->unset_userdata('email');
+            //$this->session->unset_userdata('statusid');
+            //session_destroy();
+            $this->session->sess_destroy();
             redirect(site_url('userlogin_controller'));
         }
 

@@ -13,7 +13,7 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('userlogin_controller/kk') ?>">Photographer</a>
       </li>
-      <?php if($_SESSION['statusid'] == '1')
+      <?php if($this->session->userdata('statusid') == '1')
       { ?>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
