@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('userlogin_controller/gg') ?>">Story</a>
+        <a class="nav-link" href="<?php echo site_url('userlogin_controller/kk') ?>">Story</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Photographer</a>

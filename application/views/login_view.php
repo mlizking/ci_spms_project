@@ -12,7 +12,7 @@
             Sign-in
         </div>
         <div class="card-body">
-            <?php echo form_open('userlogin_controller'); ?> 
+            <?php echo form_open('userlogin_controller/login_validation'); ?> 
             <!-- Form -->
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
