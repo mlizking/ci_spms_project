@@ -3,7 +3,15 @@ class Userlogin_controller extends CI_Controller {
 
         public function index()
         {
-            $this->load->view('login_view');
+            if($this->session->userdata('email') != '')
+            {   
+                redirect(site_url('home_controller'));
+            }
+            else
+            {
+                $this->load->view('login_view');
+            }
+            
             // $this->form_validation->set_rules('loginemail', 
             //             'Email', 'trim|required|valid_email');
             // $this->form_validation->set_rules('loginpassword', 
@@ -20,7 +28,7 @@ class Userlogin_controller extends CI_Controller {
                 
         }
 
-        public function login_validation()
+        function login_validation()
         {
             $this->form_validation->set_rules('loginemail', 
                         'Email', 'trim|required|valid_email');
@@ -40,10 +48,17 @@ class Userlogin_controller extends CI_Controller {
                         'email' => $email
                     );
                     $this->session->set_userdata($session_data);
-                    //redirect();
+                    redirect(site_url('userlogin_controller/checklogin'));
+
+                    //$this->load->view('loginsuccess');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Invalid Username and Password');
+                    redirect(site_url('userlogin_controller'));
                 }
 
-                $this->load->view('loginsuccess');
+                
             }
             else
             {
@@ -52,11 +67,40 @@ class Userlogin_controller extends CI_Controller {
             }
         }
 
-        public function gg()
+        function checklogin()
+        {
+            if($this->session->userdata('email') != '')
+            {
+                //echo '<h2>Welcome - '.$this->session->userdata('email').'</h2>';
+                //echo '<label><a href="'.site_url('userlogin_controller/logout').'">Logout</a></label>';
+                redirect(site_url('home_controller'));
+            }
+            else
+            {
+                redirect(site_url('userlogin_controller'));
+            }
+        }
+
+        function logout()
+        {
+            $this->session->unset_userdata('email');
+            redirect(site_url('userlogin_controller'));
+        }
+
+
+
+
+
+
+
+
+
+
+        function gg()
         {
             $this->load->view('sample_view');
         }
-        public function kk()
+        function kk()
         {
             redirect(site_url('userlogin_controller/gg'));
         }

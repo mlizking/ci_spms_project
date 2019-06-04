@@ -15,14 +15,27 @@
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
+
+      <?php if($this->session->userdata('email') != '')
+      { ?>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign-up</a>
+          <a class="nav-link" href="#"><?php echo $this->session->userdata('email') ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">sign-in</a>
+          <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">Logout</a>
         </li>
       </ul>
+      <?php }else{ ?>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">Login</a>
+        </li>
+      </ul>
+      <?php } ?>
     </div>
   </div>
 </nav>

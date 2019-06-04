@@ -9,7 +9,7 @@
     <center>
     <div class="card text-center border-dark mt-5 ml-5 mr-5">
         <div class="card-header">
-            Sign-in
+            Login
         </div>
         <div class="card-body">
             <?php echo form_open('userlogin_controller/login_validation'); ?> 
@@ -24,6 +24,7 @@
                     <input type="password" class="form-control" name="loginpassword" id="exampleInputPassword1" placeholder="Password" value="<?php echo set_value('loginpassword'); ?>" required>
                     <?php echo form_error('loginpassword'); ?>
                 </div>
+                <p class="mb-2"><?php echo $this->session->flashdata("error"); ?></p>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
