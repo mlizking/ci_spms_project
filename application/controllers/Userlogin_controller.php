@@ -44,10 +44,26 @@ class Userlogin_controller extends CI_Controller {
                 $this->load->model('login_model');
                 if($this->login_model->can_login($email, $password))
                 {
-                    $session_data = array(
-                        'email' => $email
-                    );
+    
+                    $query2 = $this->db->query('SELECT * FROM users WHERE u_email = "'.$email.'"');
+                    foreach ($query2->result_array() as $row)
+                    {
+                            // echo $row['u_email'];
+                            // echo $row['u_password'];
+                            // echo $row['u_name'];
+                            // echo $row['us_id'];
+                            $session_data = array(
+                                'email' => $row['u_email'],
+                                'pasword' => $row['u_password'],
+                                'name' => $row['u_name'],
+                                'statusid' => $row['us_id']
+                            );
+                            //print_r($session_data);
+                    }
+                    
                     $this->session->set_userdata($session_data);
+                    //print_r($session_data);
+                
                     redirect(site_url('userlogin_controller/checklogin'));
 
                     //$this->load->view('loginsuccess');
@@ -71,9 +87,17 @@ class Userlogin_controller extends CI_Controller {
         {
             if($this->session->userdata('email') != '')
             {
+                if($_SESSION['statusid'] == '1')
+                {
+                    redirect(site_url('admin_controller'));
+                }
+                else{
+                    redirect(site_url('home_controller'));
+                    //echo 'gg';
+                }
                 //echo '<h2>Welcome - '.$this->session->userdata('email').'</h2>';
                 //echo '<label><a href="'.site_url('userlogin_controller/logout').'">Logout</a></label>';
-                redirect(site_url('home_controller'));
+                
             }
             else
             {

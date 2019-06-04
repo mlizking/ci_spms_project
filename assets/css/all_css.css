@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+}
+
+li a:hover:not(.active) {
+  background-color: #4CAF50;
+}
+
+.nav1 > li > a {
+    background-color: #4CAF50 !important;
+}
+.nav1 > li.active > a,
+.nav1 > li:hover > a,
+.nav1 > li > a:hover {
+  color:#FFFFFF !important;
+}
+.nav1 > li.active > a:after,
+.nav1 > li:hover > a:after,
+.nav1 > li > a:hover:after {
+    background-color: #4CAF50 !important;
+}
+.nav1 > li > a {
+    background-color: #f8f8f8 !important;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.nav1 > li.active > a,
+.nav1 > li:hover > a,
+.nav1 > li > a:hover {
+  color:#FFFFFF !important;
+    background-color: #4CAF50 !important;
+  -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}

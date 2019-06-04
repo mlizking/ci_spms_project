@@ -11,8 +11,14 @@
         <a class="nav-link" href="<?php echo site_url('userlogin_controller/kk') ?>">Story</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Photographer</a>
+        <a class="nav-link" href="<?php echo site_url('userlogin_controller/kk') ?>">Photographer</a>
       </li>
+      <?php if($_SESSION['statusid'] == '1')
+      { ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
+      </li>
+      <?php } ?>
     </ul>
     <div class="form-inline my-2 my-lg-0">
 
