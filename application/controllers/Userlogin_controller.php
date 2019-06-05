@@ -125,7 +125,7 @@ class Userlogin_controller extends CI_Controller {
 
         function gg()
         {
-            $this->load->view('sample_view');
+            $this->load->view('samples/sample_view');
         }
         function kk()
         {

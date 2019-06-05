@@ -13,12 +13,6 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('userlogin_controller/kk') ?>">Photographer</a>
       </li>
-      <?php if($this->session->userdata('statusid') == '1')
-      { ?>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
-      </li>
-      <?php } ?>
     </ul>
     <div class="form-inline my-2 my-lg-0">
 
@@ -28,6 +22,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#"><?php echo $this->session->userdata('email') ?></a>
         </li>
+        <?php if($this->session->userdata('statusid') == '1')
+        { ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('admin_controller') ?>">Admin</a>
+        </li>
+        <?php } ?>        
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">Logout</a>
         </li>
