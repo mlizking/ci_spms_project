@@ -35,7 +35,7 @@
       <?php }else{ ?>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="<?php echo site_url('userregister_controller') ?>">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">Login</a>

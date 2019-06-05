@@ -2,7 +2,7 @@
 <html>
 <head>
     <?php $this->load->view('layouts/script_head'); ?>
-    <title>Sign-in</title>
+    <title>Login</title>
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="loginpassword" id="exampleInputPassword1" placeholder="Password" value="<?php echo set_value('loginpassword'); ?>" required>
+                    <input type="password" class="form-control" name="loginpassword" id="exampleInputPassword1" placeholder="Enter password" value="<?php echo set_value('loginpassword'); ?>" required>
                     <?php echo form_error('loginpassword'); ?>
                 </div>
                 <p class="mb-2"><?php echo $this->session->flashdata("error"); ?></p>
