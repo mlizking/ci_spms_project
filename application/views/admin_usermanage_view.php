@@ -31,6 +31,7 @@
                         <th scope="col">#</th>
                         <th scope="col">ชื่อ - นามสกุล</th>
                         <th scope="col">อีเมล์</th>
+                        <th scope="col">สถานะ</th>
                         <th scope="col">ลบผู้ใช้</th>
                     </tr>
                 </thead>
@@ -41,10 +42,11 @@
                 ?>
                   <tr>
                     <td><?php echo $row->u_id;?></td>
-                    <td><?php echo $row->u_name;?></td>
+                    <td><?php echo $row->u_name; $username = $row->u_name; ?></td>
                     <td><?php echo $row->u_email;?></td>
+                    <td><?php echo $row->us_name;?></td>
                     <td>
-                        <button type="button" class="btn btn-danger" OnClick="confirmDelete()">x</button>
+                        <button type="button" class="btn btn-danger" OnClick="confirmDelete(<?php echo $row->u_id ?>,'<?php echo $username ?>')">x</button>
                     </td>
                   </tr>
                 <?php
@@ -70,11 +72,11 @@
 </body>
 </html>
 <script>
-  function confirmDelete()
+  function confirmDelete(userid, username)
   {
-    if(confirm("คุณต้องการลบผู้ใช้นี้ ?") == true)
+    if(confirm("Do you want to delete '"+username+"' ?") == true)
     {
-      window.location = 'user_delete';
+      window.location = 'user_delete/'+userid;
     }
   }
 </script>
