@@ -1,6 +1,6 @@
 <?php
 
-class main_model extends CI_Model
+class admin_model extends CI_Model
 {
     function fetch_data()
     {
