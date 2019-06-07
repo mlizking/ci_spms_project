@@ -25,8 +25,8 @@
           </div>
 
 
-            <table class="table">
-                <thead class="thead-dark">
+            <table class="table table-dark">
+                <thead class="thead-light">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">ชื่อ - นามสกุล</th>
