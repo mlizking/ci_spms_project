@@ -27,6 +27,11 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('admin_controller') ?>">Admin</a>
         </li>
+        <?php }elseif($this->session->userdata('statusid') == '2')
+        { ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('admin_controller') ?>">Upload</a>
+        </li>
         <?php } ?>        
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">Logout</a>
