@@ -22,21 +22,22 @@ class Upload_controller extends CI_Controller {
                 //$config['max_width']            = 1024;
                 //$config['max_height']           = 768;
 
-                //$this->load->library('upload', $config);
+                // $this->load->library('upload', $config);
 
-                if ( ! $this->upload->do_upload('picfile'))
-                {
-                        $error = array('error' => $this->upload->display_errors());
+                // if ( ! $this->upload->do_upload('picfile'))
+                // {
+                //         $error = array('error' => $this->upload->display_errors());
 
-                        $this->load->view('upload_view', $error);
-                }
-                else
-                {
-                        echo 'gg';
-                        //$data = array('upload_data' => $this->upload->data());
+                //         $this->load->view('upload_view', $error);
+                // }
+                // else
+                // {
+                //         
+                //         //$data = array('upload_data' => $this->upload->data());
 
-                        //$this->load->view('upload_success_view', $data);
-                }
+                //         //$this->load->view('upload_success_view', $data);
+                // }
+                echo 'gg';
         }
 }
 ?>
