@@ -53,6 +53,7 @@ class Userlogin_controller extends CI_Controller {
                             // echo $row['u_name'];
                             // echo $row['us_id'];
                             $session_data = array(
+                                'userid' => $row['u_id'],
                                 'email' => $row['u_email'],
                                 'pasword' => $row['u_password'],
                                 'name' => $row['u_name'],

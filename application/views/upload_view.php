@@ -15,18 +15,18 @@
   
             <?php echo $error;?>
 
-            <?php echo form_open_multipart('upload_controller/do_upload');?>
+            <?php echo form_open_multipart('upload_controller/upload_validation');?>
                 <label>Choose file <= 5 Mb</label>
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="picfile" name="picfile" aria-describedby="picfile">
-                        <label class="custom-file-label" for="picfile"></label>
+                        <input type="file" class="custom-file-input" id="picFile" name="picFile" aria-describedby="picFile" required>
+                        <label class="custom-file-label" for="picFile"></label>
                     </div>  
                 </div>
                 <div class="form-group">
                     <label for="picName">Picture Name</label>
-                    <input type="text" class="form-control" name="picName" id="picName" placeholder="Enter picture name" value="<?php echo set_value('registername'); ?>" required>
-                    <?php //echo form_error('loginemail'); ?>
+                    <input type="text" class="form-control" name="picName" id="picName" placeholder="Enter picture name" value="<?php echo set_value('picName'); ?>" required>
+                    <?php echo form_error('picName'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>  
                 

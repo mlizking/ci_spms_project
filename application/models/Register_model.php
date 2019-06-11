@@ -2,10 +2,10 @@
 
 class Register_model extends CI_Model
 {
-    function index()
-    {
-        echo 'gg';
-    }
+    // function index()
+    // {
+    //     echo 'gg';
+    // }
     function register($fullname, $email, $password)
     {
         //echo $fullname.' '.$email.' '.$password;
