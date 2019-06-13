@@ -14,11 +14,41 @@
                   foreach ($fetch_data->result() as $row) {
                 
                      $filename = $row->p_filename;
+                     $picname = $row->p_name;
+                     $id = $row->p_id;
                      //echo '<br>'.$filename;
                      ?>
                      <div class="card">
-                      <img src="../uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
+                      <div class="img-container">
+                        <img src="../uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
+                        <div class="overlay" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
+                            <span><h1><?php echo $picname ?></h1></span>
+                        </div>
+                      </div>
                      </div>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="imgModalCenter<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header text-center">
+                              <h5 class="modal-title"><?php echo $picname ?></h5>
+                            </div>
+                            <div class="modal-body">
+                              <div class="img-container">
+                                <img class="img-fluid" src="../uploads/<?php echo $filename ?>" alt="Responsive image">
+                                <div class="overlay">
+                                  <span><h1>SPMS&copy;</h1></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary">Download</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                      <?php
                 
                   }
@@ -31,9 +61,37 @@
                 }
             ?>
     </div>
+    
 
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>
 </body>
 </html>
 
+
+<style>
+.img-container{
+  position:relative;
+  display:inline-block;
+}
+.img-container .overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgb(0,0,0);
+  opacity:0;
+  transition:opacity 500ms ease-in-out;
+}
+.img-container:hover .overlay{
+  opacity:0.5;
+}
+.overlay span{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  color:#fff;
+}
+</style>
