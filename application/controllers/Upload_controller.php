@@ -67,7 +67,8 @@ class Upload_controller extends CI_Controller {
                         $this->load->model('upload_model');
                         $this->upload_model->uploadfile($picname, $filename, $userid);
 
-                        echo $filename.' + '.$picname.' + '.$userid;
+                        //echo $filename.' + '.$picname.' + '.$userid;
+                        redirect(site_url('home_controller'));
 
                 }
  
