@@ -20,7 +20,7 @@
                      ?>
                      <div class="card">
                       <div class="img-container">
-                        <img src="../uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
+                        <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
                         <div class="overlay" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
                             <span><h1><?php echo $picname ?></h1></span>
                         </div>
@@ -36,14 +36,14 @@
                             </div>
                             <div class="modal-body">
                               <div class="img-container">
-                                <img class="img-fluid" src="../uploads/<?php echo $filename ?>" alt="Responsive image">
+                                <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image">
                                 <div class="overlay">
                                   <span><h1>SPMS&copy;</h1></span>
                                 </div>
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-primary">Download</button>
+                              <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
                             </div>
                           </div>
                         </div>

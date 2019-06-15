@@ -6,10 +6,10 @@
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
-  
+    <?php $pic = 'gg32.jpg'; ?>
     
     <div class="img-container">
-      <img class="img-fluid" src="https://scontent.fbkk2-6.fna.fbcdn.net/v/t1.0-9/64292033_2335808603109202_279387450806108160_n.jpg?_nc_cat=111&_nc_oc=AQl48ooEqqNV-WvHq69R07AEu0s7qeoSfNcEKUmzvMIA84MPw8VsWa6MaEYV2qk6imE&_nc_ht=scontent.fbkk2-6.fna&oh=6ff53a137da3efcad705d60dd288d4a0&oe=5D978DF7" alt="Responsive image" width="500">
+    <img src="<?php echo base_url(); ?>uploads/<?php echo $pic ?>" class="img-fluid card-img-top" alt="Responsive image">
       <div class="overlay" data-toggle="modal" data-target="#imgModalCenter">
         <span><h1>GG</h1></span>
       </div>
@@ -23,14 +23,14 @@
 
 <!-- Modal -->
 <div class="modal fade" id="imgModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       
       <div class="modal-body">
-        <img class="img-fluid" src="https://scontent.fbkk2-6.fna.fbcdn.net/v/t1.0-9/64292033_2335808603109202_279387450806108160_n.jpg?_nc_cat=111&_nc_oc=AQl48ooEqqNV-WvHq69R07AEu0s7qeoSfNcEKUmzvMIA84MPw8VsWa6MaEYV2qk6imE&_nc_ht=scontent.fbkk2-6.fna&oh=6ff53a137da3efcad705d60dd288d4a0&oe=5D978DF7" alt="Responsive image">
+      <img src="<?php echo base_url(); ?>uploads/<?php echo $pic ?>" class="img-fluid card-img-top" alt="Responsive image">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Download</button>
+        <a href="<?php echo site_url('photographer_controller/picdownload/'.$pic) ?>"><button type="button" class="btn btn-primary">Download</button></a>
       </div>
     </div>
   </div>
