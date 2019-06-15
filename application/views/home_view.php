@@ -6,7 +6,7 @@
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
-
+    <?php $this->load->view('layouts/carousel_view'); ?>
     <div class="card-columns">
             <?php 
                 if($fetch_data->num_rows() > 0)

@@ -33,13 +33,21 @@ class Upload_controller extends CI_Controller {
 
         public function do_upload()
         {
+
+                date_default_timezone_set("Asia/Bangkok");
+                $u_id = $this->session->userdata('userid');
+                $u_name = $this->session->userdata('name');
+                $newfilename = $u_id.$u_name.date("Ymd_").date("HisA");
+                $newfilename2 = preg_replace('/\s+/','',$newfilename);
+                //echo $newfilename2;
                 
+                $config['file_name']            = $newfilename2;
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['max_size']             = 5000;
                 //$config['max_width']            = 1024;
                 //$config['max_height']           = 768;
-
+                
                 
 
                 $this->load->library('upload', $config);
