@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="<?php echo site_url('home_controller') ?>">SPMS</a>
+  <a class="navbar-brand" href="<?php echo site_url('home_controller') ?>">
+    <img src="../images/logo/logospms.ico" width="30" height="30" alt="">
+  </a>
   <!-- <p><?php //echo anchor('Home_controller', 'SPMS', 'class="navbar-brand"'); ?></p> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -50,5 +52,3 @@
     </div>
   </div>
 </nav>
-
-

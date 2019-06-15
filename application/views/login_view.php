@@ -7,7 +7,8 @@
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
     <center>
-    <div class="card text-center border-dark mt-5 ml-5 mr-5">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-5 mt-5 ml-5 mr-5">
+    <div class="card text-center border-dark">
         <div class="card-header">
             Login
         </div>
@@ -29,6 +30,7 @@
             </form>
         </div>
     </div>
+    <div>
     </center>
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>
