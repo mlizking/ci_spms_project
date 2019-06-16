@@ -7,21 +7,21 @@
     </ol>
     <div class="carousel-inner text-center">
       <div class="carousel-item active">
-        <img src="<?php echo base_url(); ?>uploads/gg24.jpg" alt="Responsive image" style="height: 500px !important;">
+        <img src="<?php echo base_url(); ?>uploads/gg24.jpg" alt="Responsive image" class="centered-and-cropped" width=100% height="450">
         <div class="carousel-caption d-none d-md-block">
           <h5>First slide label</h5>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="<?php echo base_url(); ?>uploads/gg33.jpg" alt="Responsive image" style="height: 500px !important;">
+        <img src="<?php echo base_url(); ?>uploads/gg33.jpg" alt="Responsive image" class="centered-and-cropped" width=100% height="450">
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="<?php echo base_url(); ?>uploads/gg13.jpg" alt="Responsive image" style="height: 500px !important;">
+        <img src="<?php echo base_url(); ?>uploads/gg13.jpg" alt="Responsive image" class="centered-and-cropped" width=100% height="450">
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -38,3 +38,9 @@
     </a>
   </div>
 </div>
+
+<style>
+  .centered-and-cropped { 
+    object-fit: cover 
+  }
+</style>
