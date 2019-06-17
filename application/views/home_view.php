@@ -29,7 +29,7 @@
                      <div class="card">
                       <div class="img-container">
                         <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
-                        <div class="overlay" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
+                        <div class="overlay text-center" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
                             <span><h1><?php echo $picname ?></h1></span>
                         </div>
                       </div>
