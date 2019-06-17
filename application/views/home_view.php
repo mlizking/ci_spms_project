@@ -6,9 +6,17 @@
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
+    
+    <!-- Carousel -->
     <?php $this->load->view('layouts/carousel_view'); ?>
+
+    <!-- Search bar -->
+    <?php $this->load->view('layouts/searchbar_view'); ?>
+
+
+    <!-- Photo grid -->
     <div class="card-columns">
-            <?php 
+            <?php
                 if($fetch_data->num_rows() > 0)
                 {
                   foreach ($fetch_data->result() as $row) {
