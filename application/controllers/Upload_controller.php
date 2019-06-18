@@ -22,7 +22,9 @@ class Upload_controller extends CI_Controller {
                 if ($this->form_validation->run())
                 { 
                         // redirect(site_url('upload_controller/do_upload'));
-                        $this->do_upload();
+                        echo $this->input->post('picName');
+                        echo $this->input->post('picTag');
+                        //$this->do_upload();
                 }  
                 else
                 {

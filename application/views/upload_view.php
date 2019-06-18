@@ -29,6 +29,11 @@
                         <input type="text" class="form-control" name="picName" id="picName" placeholder="Enter picture name" value="<?php echo set_value('picName'); ?>" required>
                         <?php echo form_error('picName'); ?>
                     </div>
+                    <div class="form-group">
+                        <label for="picTag">Tags</label>
+                        <input type="text" class="form-control" data-role="tagsinput" name="picTag" id="picTag" placeholder="Example : Landscape" value="<?php //echo set_value('picName'); ?>" required>
+                        <?php //echo form_error('picName'); ?>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>  
                     
                 </form>

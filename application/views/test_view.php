@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <?php $this->load->view('layouts/script_head'); ?>
-    <title>Hello !!</title>
 </head>
 <body>
-    <?php $this->load->view('layouts/navbar'); ?>
-  
-    CONTENT!! 
+   
+<input type="text" class="form-control" data-role="tagsinput" value="jQuery,Script,Net">
 
-    <img src="<?php echo base_url(); ?>uploads/<?php echo $path ?>" class="img-fluid" alt="Responsive image">
-
-    <?php $this->load->view('layouts/footer'); ?>
-    <?php $this->load->view('layouts/script_body'); ?>
 </body>
 </html>

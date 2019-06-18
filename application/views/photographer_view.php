@@ -3,9 +3,30 @@
 <head>
     <?php $this->load->view('layouts/script_head'); ?>
     <title>Hello !!</title>
+
+    
+    
+
+
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
+    
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
     <?php $pic = 'gg32.jpg'; ?>
     
     <div class="img-container">

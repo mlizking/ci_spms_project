@@ -43,4 +43,9 @@ class Home_controller extends CI_Controller {
                 //echo '<img class="img-fluid" src="../uploads/'.$pic.'" alt="Responsive image">';
 
         }
+
+        function test()
+        {
+        $this->load->view('test_view');
+        }
 }
