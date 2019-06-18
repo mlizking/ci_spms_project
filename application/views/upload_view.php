@@ -5,6 +5,12 @@
     <title>Upload</title>
 </head>
 <body>
+    <?php 
+        if($this->session->userdata('statusid') != '2')
+        {   
+            redirect(site_url('home_controller'));
+        } 
+    ?>
     <?php $this->load->view('layouts/navbar'); ?>
     <center>
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-5 mt-5 ml-5 mr-5">
@@ -31,8 +37,8 @@
                     </div>
                     <div class="form-group">
                         <label for="picTag">Tags</label>
-                        <input type="text" class="form-control" data-role="tagsinput" name="picTag" id="picTag" placeholder="Example : Landscape" value="<?php //echo set_value('picName'); ?>" required>
-                        <?php //echo form_error('picName'); ?>
+                        <input type="text" class="form-control" data-role="tagsinput" name="picTag" id="picTag" placeholder="Example : Landscape" value="<?php echo set_value('picTag'); ?>" required>
+                        <?php echo form_error('picTag'); ?>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>  
                     

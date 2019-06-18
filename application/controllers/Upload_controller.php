@@ -18,13 +18,15 @@ class Upload_controller extends CI_Controller {
         {
                 $this->form_validation->set_rules('picName', 
                         'Picture name', 'trim|required');
+                $this->form_validation->set_rules('picTag', 
+                        'Picture tag', 'required');        
 
                 if ($this->form_validation->run())
                 { 
                         // redirect(site_url('upload_controller/do_upload'));
-                        echo $this->input->post('picName');
-                        echo $this->input->post('picTag');
-                        //$this->do_upload();
+                        //echo $this->input->post('picName');
+                        //echo $this->input->post('picTag');
+                        $this->do_upload();
                 }  
                 else
                 {
@@ -71,11 +73,12 @@ class Upload_controller extends CI_Controller {
                         $upload_data = $this->upload->data();
 
                         $picname = $this->input->post('picName');
+                        $pictag = $this->input->post('picTag');
                         $filename = $upload_data['file_name'];
                         $userid = $this->session->userdata('userid');
 
                         $this->load->model('upload_model');
-                        $this->upload_model->uploadfile($picname, $filename, $userid);
+                        $this->upload_model->uploadfile($picname, $filename, $userid, $pictag);
 
                         //echo $filename.' + '.$picname.' + '.$userid;
                         redirect(site_url('home_controller'));

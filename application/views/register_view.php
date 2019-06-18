@@ -5,6 +5,12 @@
     <title>Register</title>
 </head>
 <body>
+    <?php 
+        if($this->session->userdata('statusid') != '')
+        {   
+            redirect(site_url('home_controller'));
+        } 
+    ?>
     <?php $this->load->view('layouts/navbar'); ?>
 
     <center>

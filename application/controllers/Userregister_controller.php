@@ -3,14 +3,10 @@ class Userregister_controller extends CI_Controller {
 
         public function index()
         {
-            if($this->session->userdata('email') != '')
-            {   
-                redirect(site_url('home_controller'));
-            }
-            else
-            {
-                $this->load->view('register_view');
-            }
+            
+            
+            $this->load->view('register_view');
+            
                 
         }
 

@@ -3,14 +3,9 @@ class Userlogin_controller extends CI_Controller {
 
         public function index()
         {
-            if($this->session->userdata('email') != '')
-            {   
-                redirect(site_url('home_controller'));
-            }
-            else
-            {
-                $this->load->view('login_view');
-            }
+            
+            $this->load->view('login_view');
+            
             
             // $this->form_validation->set_rules('loginemail', 
             //             'Email', 'trim|required|valid_email');
