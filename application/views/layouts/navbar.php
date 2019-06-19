@@ -16,30 +16,61 @@
         <a class="nav-link" href="<?php echo site_url('photographer_controller') ?>">Photographer</a>
       </li>
     </ul>
-    <div class="form-inline my-2 my-lg-0">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <?php $this->load->view('layouts/searchbar_view'); ?>
+      </li>
+    </ul>
 
+    <div class="form-inline my-2 my-lg-0">
+      
       <?php if($this->session->userdata('email') != '')
       { ?>
+
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="#"><?php echo $this->session->userdata('email') ?></a>
         </li>
+
         <?php if($this->session->userdata('statusid') == '1')
         { ?>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('admin_controller') ?>">Admin</a>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin_controller/user_manage') ?>">User Manage</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">ggggggg</a>
+          </div>
         </li>
+
         <?php }elseif($this->session->userdata('statusid') == '2')
         { ?>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('upload_controller') ?>">Upload</a>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Manage
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('photographer_controller/manage_photo') ?>">Photo Manage</a>
+            <a class="dropdown-item" href="<?php echo site_url('upload_controller') ?>">Upload</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">ggggggg</a>
+          </div>
         </li>
-        <?php } ?>        
+
+        <?php } ?>  
+
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">Logout</a>
         </li>
       </ul>
+
       <?php }else{ ?>
+
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('userregister_controller') ?>">Register</a>
@@ -48,7 +79,20 @@
           <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">Login</a>
         </li>
       </ul>
+
       <?php } ?>
+
     </div>
   </div>
 </nav>
+
+<?php 
+  if($this->session->userdata('statusid') == '1')
+  {
+?>
+
+
+
+<?php
+  } 
+?>

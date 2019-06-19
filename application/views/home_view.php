@@ -11,7 +11,7 @@
     <?php $this->load->view('layouts/carousel_view'); ?>
 
     <!-- Search bar -->
-    <?php $this->load->view('layouts/searchbar_view'); ?>
+    <?php //$this->load->view('layouts/searchbar_view'); ?>
 
 
     <!-- Photo grid -->
@@ -64,7 +64,7 @@
                 else
                 {
         
-                    echo 'No Data Found!';
+                    echo 'No Data Found!!';
                 
                 }
             ?>

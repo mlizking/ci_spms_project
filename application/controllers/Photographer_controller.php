@@ -27,4 +27,12 @@ class Photographer_controller extends CI_Controller {
                 //echo '<img class="img-fluid" src="../uploads/'.$pic.'" alt="Responsive image">';
 
         }
+
+        function Manage_photo()
+        {       
+                $id = $this->session->userdata('userid');
+                $this->load->model('photographer_model');
+                $data['photodata'] = $this->photographer_model->photo_manage($id);
+                $this->load->view('photographer_photomanage_view', $data);
+        }
 }
