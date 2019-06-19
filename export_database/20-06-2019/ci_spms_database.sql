@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2019 at 09:25 PM
+-- Generation Time: Jun 19, 2019 at 09:20 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -73,11 +73,9 @@ INSERT INTO `pictures` (`p_id`, `p_name`, `p_filename`, `p_tag`, `u_id`, `p_crea
 (28, 'gg18.jpg', 'gg18.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (29, 'gg19.jpg', 'gg19.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (30, 'gg20.jpg', 'gg20.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
-(31, 'gg21.jpg', 'gg21.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (32, 'gg22.jpg', 'gg22.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (33, 'gg23.jpg', 'gg23.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (34, 'gg24.jpg', 'gg24.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
-(35, 'gg25.jpg', 'gg25.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (36, 'gg26.jpg', 'gg26.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (37, 'gg27.jpg', 'gg27.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
 (38, 'gg28.jpg', 'gg28.jpg', '', 16, '2019-06-13 09:56:33', '0000-00-00 00:00:00'),
@@ -97,7 +95,11 @@ INSERT INTO `pictures` (`p_id`, `p_name`, `p_filename`, `p_tag`, `u_id`, `p_crea
 (52, '!!!!', '16PhotographerAdmin20190616_004935AM.jpg', '', 16, '2019-06-15 17:49:35', '0000-00-00 00:00:00'),
 (53, 'Windmill', '16PhotographerAdmin20190618_001050AM.jpg', '', 16, '2019-06-17 17:10:50', '0000-00-00 00:00:00'),
 (54, 'Blur blur', '16PhotographerAdmin20190619_001848AM.jpg', 'Blur,Temple,Portrait,People', 16, '2019-06-18 17:18:49', '0000-00-00 00:00:00'),
-(55, 'pimchanok kongdee', '16PhotographerAdmin20190619_022004AM.jpg', 'Portrait,Girl', 16, '2019-06-18 19:20:05', '0000-00-00 00:00:00');
+(55, 'pimchanok kongdee', '16PhotographerAdmin20190619_022004AM.jpg', 'Portrait,Girl', 16, '2019-06-18 19:20:05', '0000-00-00 00:00:00'),
+(56, 'Keerati cool cool', '3qqqqqqqq20190619_170136PM.jpg', 'silhouette,people,black and white,bw,light', 3, '2019-06-19 10:01:36', '0000-00-00 00:00:00'),
+(57, 'เพื่อน', '3qqqqqqqq20190619_170349PM.jpg', 'friends,people,portrait,reunion', 3, '2019-06-19 10:03:49', '0000-00-00 00:00:00'),
+(58, 'KKU', '3qqqqqqqq20190620_021147AM.jpg', 'Graduate,celebration,Congratulation,KKU,University', 3, '2019-06-19 19:11:47', '0000-00-00 00:00:00'),
+(59, 'Dek Dek', '3qqqqqqqq20190620_021525AM.jpg', 'Children,people', 3, '2019-06-19 19:15:25', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -184,7 +186,7 @@ ALTER TABLE `userstatus`
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `users`

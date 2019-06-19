@@ -28,11 +28,26 @@ class Photographer_controller extends CI_Controller {
 
         }
 
-        function Manage_photo()
+        function manage_photo()
         {       
                 $id = $this->session->userdata('userid');
                 $this->load->model('photographer_model');
                 $data['photodata'] = $this->photographer_model->photo_manage($id);
                 $this->load->view('photographer_photomanage_view', $data);
+        }
+
+        function delete_photo($pid, $file)
+        {
+                //echo $file.' GG '.$pid.'<br>';
+
+                $path = './uploads/'.$file;
+                //echo $path;
+
+                $this->load->model("photographer_model");
+                $this->photographer_model->delete_photo($pid);
+
+                unlink($path);
+
+                $this->manage_photo();
         }
 }
