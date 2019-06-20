@@ -6,6 +6,7 @@
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
+    
     <div class="container text-center mx-auto mb-3">
         <h1>Search complete!!</h1>
         <span class="badge badge-success">

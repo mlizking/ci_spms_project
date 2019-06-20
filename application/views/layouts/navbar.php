@@ -29,7 +29,7 @@
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo $this->session->userdata('email') ?></a>
+          <a class="nav-link" href="<?php echo site_url('profile_controller') ?>"><?php echo $this->session->userdata('email') ?></a>
         </li>
 
         <?php if($this->session->userdata('statusid') == '1')

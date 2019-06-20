@@ -10,7 +10,6 @@ class Login_model extends CI_Model
 
         if($query->num_rows() > 0)
         {
-            //SELECT * FROM `users` WHERE u_email = 'kkkk@kkkk.com'
             return true;
         }
         else

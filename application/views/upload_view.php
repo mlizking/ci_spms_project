@@ -12,6 +12,11 @@
         } 
     ?>
     <?php $this->load->view('layouts/navbar'); ?>
+
+    <div class="container-fluid mt-3">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">อัพโหลดรูปภาพ</h1>
+      </div>
     <center>
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-5 mt-5 ml-5 mr-5">
         <div class="card text-center border-dark">
@@ -48,6 +53,7 @@
         </div>
     </div>
     </center>
+    </div>
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>
 </body>

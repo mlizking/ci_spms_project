@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2019 at 09:20 PM
+-- Generation Time: Jun 20, 2019 at 12:17 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -112,6 +112,7 @@ CREATE TABLE `users` (
   `u_email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `u_password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `u_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `u_profilepic` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `us_id` int(11) NOT NULL,
   `u_createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `u_updatetime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
@@ -121,20 +122,20 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`u_id`, `u_email`, `u_password`, `u_name`, `us_id`, `u_createtime`, `u_updatetime`) VALUES
-(1, 'kkkk@kkkk.com', '1234qwer', 'Ali Ababwa', 1, '2019-06-03 18:18:05', '2019-06-04 07:25:56'),
-(3, 'qqqq@qqqq.com', '1234qwer', 'qqqq qqqq', 2, '2019-06-04 14:21:30', '0000-00-00 00:00:00'),
-(4, 'king@king.com', '12341234', 'king king', 3, '2019-06-05 09:20:40', '0000-00-00 00:00:00'),
-(7, 'Levi@Levi.gg', '12341234', 'Levi Banks', 3, '2019-06-06 18:19:48', '0000-00-00 00:00:00'),
-(8, 'Ty@Wilkes.gg', '12341234', 'Ty Wilkes', 3, '2019-06-07 10:39:02', '0000-00-00 00:00:00'),
-(9, 'Rikki@Sheridan.gg', '12341234', 'Rikki Sheridan', 3, '2019-06-07 10:40:29', '0000-00-00 00:00:00'),
-(10, 'Shelby@Meyer.gg', '12341234', 'Shelby Meyer', 3, '2019-06-07 10:40:56', '0000-00-00 00:00:00'),
-(11, 'Ihsan@Pate.gg', '12341234', 'Ihsan Pate', 3, '2019-06-07 10:41:16', '0000-00-00 00:00:00'),
-(12, 'Robbie@Rutledge.gg', '12341234', 'Robbie Rutledge', 3, '2019-06-07 10:41:37', '0000-00-00 00:00:00'),
-(13, 'Amman@Fritz.gg', '12341234', 'Amman Fritz', 3, '2019-06-07 10:41:55', '0000-00-00 00:00:00'),
-(14, 'Harvie@Collins.gg', '12341234', 'Harvie Collins', 3, '2019-06-07 10:42:24', '0000-00-00 00:00:00'),
-(15, 'Sahib@Salt.gg', '12341234', 'Sahib Salt', 3, '2019-06-07 10:42:49', '0000-00-00 00:00:00'),
-(16, 'photo@photo.photo', '1234qwer', 'Photographer Admin', 2, '2019-06-11 09:54:02', '2019-06-11 09:54:28');
+INSERT INTO `users` (`u_id`, `u_email`, `u_password`, `u_name`, `u_profilepic`, `us_id`, `u_createtime`, `u_updatetime`) VALUES
+(1, 'kkkk@kkkk.com', '1234qwer', 'Ali Ababwa', '', 1, '2019-06-03 18:18:05', '2019-06-04 07:25:56'),
+(3, 'qqqq@qqqq.com', '1234qwer', 'qqqq qqqq', 'pim.jpg', 2, '2019-06-04 14:21:30', '2019-06-20 10:11:37'),
+(4, 'king@king.com', '12341234', 'king king', '', 3, '2019-06-05 09:20:40', '0000-00-00 00:00:00'),
+(7, 'Levi@Levi.gg', '12341234', 'Levi Banks', '', 3, '2019-06-06 18:19:48', '0000-00-00 00:00:00'),
+(8, 'Ty@Wilkes.gg', '12341234', 'Ty Wilkes', '', 3, '2019-06-07 10:39:02', '0000-00-00 00:00:00'),
+(9, 'Rikki@Sheridan.gg', '12341234', 'Rikki Sheridan', '', 3, '2019-06-07 10:40:29', '0000-00-00 00:00:00'),
+(10, 'Shelby@Meyer.gg', '12341234', 'Shelby Meyer', '', 3, '2019-06-07 10:40:56', '0000-00-00 00:00:00'),
+(11, 'Ihsan@Pate.gg', '12341234', 'Ihsan Pate', '', 3, '2019-06-07 10:41:16', '0000-00-00 00:00:00'),
+(12, 'Robbie@Rutledge.gg', '12341234', 'Robbie Rutledge', '', 3, '2019-06-07 10:41:37', '0000-00-00 00:00:00'),
+(13, 'Amman@Fritz.gg', '12341234', 'Amman Fritz', '', 3, '2019-06-07 10:41:55', '0000-00-00 00:00:00'),
+(14, 'Harvie@Collins.gg', '12341234', 'Harvie Collins', '', 3, '2019-06-07 10:42:24', '0000-00-00 00:00:00'),
+(15, 'Sahib@Salt.gg', '12341234', 'Sahib Salt', '', 3, '2019-06-07 10:42:49', '0000-00-00 00:00:00'),
+(16, 'photo@photo.photo', '1234qwer', 'Photographer Admin', 'photophoto.jpg', 2, '2019-06-11 09:54:02', '2019-06-20 08:28:17');
 
 -- --------------------------------------------------------
 
