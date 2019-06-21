@@ -10,7 +10,7 @@
 </head>
 <body>
   <?php 
-    if($this->session->userdata('statusid') != '2')
+    if($this->session->userdata('statusid') != '1')
       {   
         redirect(site_url('home_controller'));
       } 
@@ -58,7 +58,7 @@
                           <div class="modal-header text-dark mx-auto">
                               <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลรูปภาพ</h5>         
                           </div>
-                          <?php echo form_open('photographer_controller/update_photo/'.$id); ?> 
+                          <?php echo form_open('admin_controller/photo_update/'.$id); ?> 
                           <!-- Form -->
                           <div class="modal-body text-dark">
                       
@@ -101,7 +101,7 @@
                         </div>  
                       </div>
                       <div class="modal-footer mx-auto">
-                        <a href="<?php echo site_url('photographer_controller/delete_photo/'.$id.'/'.$filename) ?>">
+                        <a href="<?php echo site_url('admin_controller/photo_delete/'.$id.'/'.$filename) ?>">
                           <button type="button" class="btn btn-success">Yes</button>
                         </a>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>

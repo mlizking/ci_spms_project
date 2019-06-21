@@ -5,6 +5,12 @@
     <title>Hello !!</title>
 </head>
 <body>
+<?php 
+    if($this->session->userdata('email') == '')
+    {   
+        redirect(site_url('home_controller'));
+    } 
+?>
     <?php $this->load->view('layouts/navbar'); ?>
   
     <?php
@@ -59,19 +65,29 @@
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <div class="modal-header mx-auto">
+                                            <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูล</h5>
+                                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            </button> -->
                                         </div>
+                                        <?php echo form_open('profile_controller/edit_userprofile'); ?> 
+                                        <!-- Form -->
                                         <div class="modal-body">
-                                            ...
+                                    
+                                                <div class="form-group">
+                                                    <label for="editname">Fullname</label>
+                                                    <input type="text" class="form-control" name="editname" id="editname" placeholder="Enter fullname" value="<?php echo $name ?>" required>
+                                                    <?php //echo form_error('loginemail'); ?>
+                                                </div>
+                                                
+                                                <p class="mb-2"><?php //echo $this->session->flashdata("error"); ?></p>
+
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn btn-warning">Save changes</button>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

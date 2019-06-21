@@ -12,8 +12,20 @@ class Profile_controller extends CI_Controller {
             $this->load->view('userprofile_view', $data);
 
             //echo $data;
-
-
-                
+       
         }
+
+        function edit_userprofile()
+        {
+            $uid = $this->session->userdata('userid');
+            $uname = $this->input->post('editname');
+
+            $this->load->model('profile_model');
+            $this->profile_model->updateuser_data($uid, $uname);
+            
+            //$this->index();
+            redirect(site_url('rrofile_controller'));            
+        }
+
+
 }

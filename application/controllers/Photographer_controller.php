@@ -48,6 +48,21 @@ class Photographer_controller extends CI_Controller {
 
                 unlink($path);
 
-                $this->manage_photo();
+                //$this->manage_photo();
+                redirect(site_url('admin_controller/manage_photo'));
+        }
+
+        function update_photo($pid)
+        {
+            $pname = $this->input->post('editname');
+
+            $this->load->model('photographer_model');
+            $this->photographer_model->update_photo($pid, $pname);
+            
+            //$this->manage_photo();
+            redirect(site_url('admin_controller/manage_photo'));
+      
+            //echo $pid.' + '.$this->input->post('editname');
+                
         }
 }

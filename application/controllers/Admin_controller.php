@@ -25,4 +25,42 @@ class Admin_controller extends CI_Controller {
                 $this->admin_model->delete_user_data($userid);
                 redirect(site_url('admin_controller/user_manage'));
         }
+
+        function photo_manage()
+        {       
+                $id = $this->session->userdata('userid');
+                $this->load->model('photographer_model');
+                $data['photodata'] = $this->photographer_model->photo_manage($id);
+                $this->load->view('admin_photomanage_view', $data);
+        }
+
+        function photo_delete($pid, $file)
+        {
+                //echo $file.' GG '.$pid.'<br>';
+
+                $path = './uploads/'.$file;
+                //echo $path;
+
+                $this->load->model("photographer_model");
+                $this->photographer_model->delete_photo($pid);
+
+                unlink($path);
+
+                //$this->photo_manage();
+                redirect(site_url('admin_controller/photo_manage'));
+        }
+
+        function photo_update($pid)
+        {
+            $pname = $this->input->post('editname');
+
+            $this->load->model('photographer_model');
+            $this->photographer_model->update_photo($pid, $pname);
+            
+            //$this->photo_manage();  
+            
+            redirect(site_url('admin_controller/photo_manage'));
+                
+            //echo $pid.' + '.$this->input->post('editname');         
+        }
 }

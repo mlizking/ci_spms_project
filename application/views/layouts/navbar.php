@@ -42,6 +42,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
             <a class="dropdown-item" href="<?php echo site_url('admin_controller/user_manage') ?>">User Manage</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin_controller/photo_manage') ?>">Photo Manage</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">ggggggg</a>
           </div>

@@ -10,4 +10,11 @@ class Profile_model extends CI_Model
         $query = $this->db->get('users');
         return $query;
     }
+
+    function updateuser_data($id, $name)
+    {
+        $this->db->set('u_name', $name);
+        $this->db->where('u_id', $id);
+        $this->db->update('users');
+    }
 }

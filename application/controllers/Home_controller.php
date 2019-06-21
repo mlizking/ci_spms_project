@@ -46,6 +46,6 @@ class Home_controller extends CI_Controller {
 
         function test()
         {
-        $this->load->view('test_view');
+                $this->load->view('test_view');
         }
 }
