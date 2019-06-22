@@ -6,6 +6,7 @@ class Home_model extends CI_Model
     {
 
         //select all
+        $this->db->join('users', 'pictures.u_id = users.u_id', 'left');
         $this->db->order_by("p_createtime", "desc");
         $query = $this->db->get('pictures');
         return $query;

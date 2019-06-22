@@ -3,7 +3,7 @@
 <script type="text/javascript">
     var scrolltotop={setting:{startline:100,scrollto:0,scrollduration:1e3,fadeduration:[500,100]}
     ,controlHTML:'<img src="https://i1155.photobucket.com/albums/p559/scrolltotop/arrow13.png" />'
-    ,controlattrs:{offsetx:5,offsety:5},anchorkeyword:"#top"
+    ,controlattrs:{offsetx:70,offsety:70},anchorkeyword:"#top"
     ,state:{isvisible:!1,shouldvisible:!1}
     ,scrollup:function(){this.cssfixedsupport||this.$control.css({opacity:0});
     var t=isNaN(this.setting.scrollto)?this.setting.scrollto:parseInt(this.setting.scrollto);

@@ -24,6 +24,8 @@
                      $filename = $row->p_filename;
                      $picname = $row->p_name;
                      $id = $row->p_id;
+                     $uname = $row->u_name;
+                     $upic = $row->u_profilepic;
                      //echo '<br>'.$filename;
                      ?>
                      <div class="card">
@@ -39,7 +41,13 @@
                       <div class="modal fade" id="imgModalCenter<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content">
-                            <div class="modal-header text-center">
+                            <div class="modal-header">
+                              <div class="modal-title">
+                                <div class="row">
+                                  <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped ml-2" width="30" height="30">
+                                  <h5 class="modal-title ml-2"><?php echo $uname ?></h5>
+                                </div>
+                              </div>
                               <h5 class="modal-title"><?php echo $picname ?></h5>
                             </div>
                             <div class="modal-body">
