@@ -6,7 +6,7 @@
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
-    
+    <div class="container-fluid">
     <!-- Carousel -->
     <?php $this->load->view('layouts/carousel_view'); ?>
 
@@ -66,13 +66,17 @@
                               <?php 
                                 foreach ($ptag as $value) {
                                   $value2 = ucfirst(strtolower($value));
-                                  ?><a href="#" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                                  ?><a href="<?php echo site_url('search_controller/tag_search/'.$value2) ?>" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
                                 }
                               ?>
                             </div>
                             <div class="modal-footer">
-                              <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <?php if($this->session->userdata('email') != ''){ ?>
+                                <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <?php }else{ ?>
+                                <a href="<?php echo site_url('userlogin_controller') ?>"><h5>Please login to download this picture.</h5></a>
+                              <?php } ?>
                             </div>
                           </div>
                         </div>
@@ -90,7 +94,7 @@
                 }
             ?>
     </div>
-    
+    </div>
 
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>

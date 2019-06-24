@@ -7,6 +7,7 @@
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
     
+    <div class="container-fluid">
     <div class="container text-center mx-auto mb-3">
         <h1>Search complete!!</h1>
         <span class="badge badge-success">
@@ -34,7 +35,14 @@
                     
                     $filename = $row->p_filename;
                     $picname = $row->p_name;
+                    $pdetail = $row->p_detail;
+
+                    $tag = $row->p_tag;
+                    $ptag = explode(",",$tag);
+
                     $id = $row->p_id;
+                    $uname = $row->u_name;
+                    $upic = $row->u_profilepic;
                     //echo '<br>'.$filename;
                     ?>
                     <div class="card">
@@ -50,19 +58,37 @@
                     <div class="modal fade" id="imgModalCenter<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content">
-                          <div class="modal-header text-center">
-                            <h5 class="modal-title"><?php echo $picname ?></h5>
-                          </div>
-                          <div class="modal-body">
+                          <div class="modal-header">
+                              <div class="modal-title">
+                                <div class="row">
+                                  <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped ml-2" width="30" height="30">
+                                  <h5 class="modal-title ml-2"><?php echo $uname ?></h5>
+                                </div>
+                              </div>
+                              <h5 class="modal-title"><?php echo $picname ?></h5>
+                            </div>
+                          <div class="modal-body text-center">
                             <div class="img-container">
                               <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image">
                               <div class="overlay">
                                 <span><h1>SPMS&copy;</h1></span>
                               </div>
                             </div>
+                            <h5 class="mt-3"><?php echo $pdetail ?></h5>
+                            <?php 
+                              foreach ($ptag as $value) {
+                                $value2 = ucfirst(strtolower($value));
+                                ?><a href="<?php echo site_url('search_controller/tag_search/'.$value2) ?>" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                              }
+                            ?>
                           </div>
                           <div class="modal-footer">
-                            <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                            <?php if($this->session->userdata('email') != ''){ ?>
+                              <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <?php }else{ ?>
+                              <a href="<?php echo site_url('userlogin_controller') ?>"><h5>Please login to download this picture.</h5></a>
+                            <?php } ?>
                           </div>
                         </div>
                       </div>
@@ -84,7 +110,7 @@
                 
               }
             ?>
-        
+    </div>    
 
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>

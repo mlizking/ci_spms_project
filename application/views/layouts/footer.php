@@ -3,7 +3,7 @@
 <script type="text/javascript">
     var scrolltotop={setting:{startline:100,scrollto:0,scrollduration:1e3,fadeduration:[500,100]}
     ,controlHTML:'<img src="https://i1155.photobucket.com/albums/p559/scrolltotop/arrow13.png" />'
-    ,controlattrs:{offsetx:70,offsety:70},anchorkeyword:"#top"
+    ,controlattrs:{offsetx:20,offsety:20},anchorkeyword:"#top"
     ,state:{isvisible:!1,shouldvisible:!1}
     ,scrollup:function(){this.cssfixedsupport||this.$control.css({opacity:0});
     var t=isNaN(this.setting.scrollto)?this.setting.scrollto:parseInt(this.setting.scrollto);
@@ -39,7 +39,7 @@
 </noscript>
 
 
-<footer class="footer bg-dark text-white">
+<footer class="footer bg-dark text-white mt-3">
     <div class="footer-copyright text-center py-3">Social Photo Management System © 2019
         <a href="https://www.facebook.com/rukmanee">facebook</a>
     </div>

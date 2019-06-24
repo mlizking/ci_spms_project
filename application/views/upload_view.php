@@ -45,6 +45,11 @@
                         <input type="text" class="form-control" data-role="tagsinput" name="picTag" id="picTag" placeholder="Example : Landscape" value="<?php echo set_value('picTag'); ?>" required>
                         <?php echo form_error('picTag'); ?>
                     </div>
+                    <div class="form-group">
+                        <label for="picDetail">Picture detail</label>
+                        <textarea class="form-control" id="picDetail" name="picDetail" rows="3" placeholder="Enter picture detail" value="<?php echo set_value('picDetail'); ?>" required></textarea>
+                        <?php echo form_error('picDetail'); ?>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>  
                     
                 </form>

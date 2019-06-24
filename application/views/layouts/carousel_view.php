@@ -18,14 +18,11 @@
     <div class="carousel-inner text-center">
       
       <?php $i = 0; foreach ($random_data->result() as $row) { 
-
         $cfilename = $row->p_filename;
         $cpicname = $row->p_name;
         $cpdetail = $row->p_detail;
-
         $ptag = $row->p_tag;
         $cptag = explode(",",$ptag);
-
         $cid = $row->p_id;
         $cuname = $row->u_name;
         $cupic = $row->u_profilepic;
@@ -70,13 +67,17 @@
                               <?php 
                                 foreach ($cptag as $value) {
                                   $value2 = ucfirst(strtolower($value));
-                                  ?><a href="#" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                                  ?><a href="<?php echo site_url('search_controller/tag_search/'.$value2) ?>" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
                                 }
                               ?>
                             </div>
                             <div class="modal-footer">
-                              <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <?php if($this->session->userdata('email') != ''){ ?>
+                                <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <?php }else{ ?>
+                                <a href="<?php echo site_url('userlogin_controller') ?>"><h5>Please login to download this picture.</h5></a>
+                              <?php } ?>
                             </div>
                           </div>
                         </div>
@@ -122,13 +123,17 @@
                               <?php 
                                 foreach ($cptag as $value) {
                                   $value2 = ucfirst(strtolower($value));
-                                  ?><a href="#" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                                  ?><a href="<?php echo site_url('search_controller/tag_search/'.$value2) ?>" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
                                 }
                               ?>
                             </div>
                             <div class="modal-footer">
-                              <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <?php if($this->session->userdata('email') != ''){ ?>
+                                <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <?php }else{ ?>
+                                <a href="<?php echo site_url('userlogin_controller') ?>"><h5>Please login to download this picture.</h5></a>
+                              <?php } ?>
                             </div>
                           </div>
                         </div>
@@ -154,7 +159,6 @@
 .centered-and-cropped { 
     object-fit: cover 
   }
-
 .img-containerr{
   position:relative;
   /* display:inline-block; */
