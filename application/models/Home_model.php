@@ -17,6 +17,7 @@ class Home_model extends CI_Model
     {
 
         //select random
+        $this->db->join('users', 'pictures.u_id = users.u_id', 'left');
         $this->db->order_by('rand()');
         $this->db->limit(5);
         $query = $this->db->get('pictures');

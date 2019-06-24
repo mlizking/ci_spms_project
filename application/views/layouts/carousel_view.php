@@ -17,43 +17,66 @@
 
     <div class="carousel-inner text-center">
       
-      <?php $i = 0; foreach ($random_data->result() as $row) {        
-        $filename = $row->p_filename;
-        $picname = $row->p_name;
-        $id = $row->p_id;
+      <?php $i = 0; foreach ($random_data->result() as $row) { 
+
+        $cfilename = $row->p_filename;
+        $cpicname = $row->p_name;
+        $cpdetail = $row->p_detail;
+
+        $ptag = $row->p_tag;
+        $cptag = explode(",",$ptag);
+
+        $cid = $row->p_id;
+        $cuname = $row->u_name;
+        $cupic = $row->u_profilepic;
+        
         if($i == 0){ ?>
 
           
           <div class="carousel-item active">
             <div class="img-containerr">
-              <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image" class="centered-and-cropped" width=100% height="550">
-              <div class="overlayy" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
+              <img src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image" class="centered-and-cropped" width=100% height="550">
+              <div class="overlayy" data-toggle="modal" data-target="#imgModalCenter<?php echo $cid ?>"><!-- Trigger Modal -->
                 <span><h1>SPMS&copy;</h1></span>
               </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <h5><?php echo $picname ?></h5>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <h5><?php echo $cpicname ?></h5>
+              <p><?php echo $cpdetail ?></p>
             </div>
           </div>
 
                       <!-- Modal -->
-                      <div class="modal fade" id="imgModalCenter<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal fade" id="imgModalCenter<?php echo $cid ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content">
-                            <div class="modal-header text-center">
-                              <h5 class="modal-title"><?php echo $picname ?></h5>
+                            <div class="modal-header">
+                              <div class="modal-title">
+                                <div class="row">
+                                  <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $cupic ?>" class="centered-and-cropped ml-2" width="30" height="30">
+                                  <h5 class="modal-title ml-2"><?php echo $cuname ?></h5>
+                                </div>
+                              </div>
+                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
                             </div>
                             <div class="modal-body">
                               <div class="img-container">
-                                <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image">
+                                <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image">
                                 <div class="overlay">
                                   <span><h1>SPMS&copy;</h1></span>
                                 </div>
                               </div>
+                              <h5 class="mt-3"><?php echo $cpdetail ?></h5>
+                              <?php 
+                                foreach ($cptag as $value) {
+                                  $value2 = ucfirst(strtolower($value));
+                                  ?><a href="#" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                                }
+                              ?>
                             </div>
                             <div class="modal-footer">
-                              <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                              <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                           </div>
                         </div>
@@ -64,34 +87,48 @@
 
           <div class="carousel-item">
             <div class="img-containerr">
-              <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image" class="centered-and-cropped" width=100% height="550">
-              <div class="overlayy" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
+              <img src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image" class="centered-and-cropped" width=100% height="550">
+              <div class="overlayy" data-toggle="modal" data-target="#imgModalCenter<?php echo $cid ?>"><!-- Trigger Modal -->
                 <span><h1>SPMS&copy;</h1></span>
               </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <h5><?php echo $picname ?></h5>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <h5><?php echo $cpicname ?></h5>
+              <p><?php echo $cpdetail ?></p>
             </div>
           </div>
 
                       <!-- Modal -->
-                      <div class="modal fade" id="imgModalCenter<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal fade" id="imgModalCenter<?php echo $cid ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content">
                             <div class="modal-header text-center">
-                              <h5 class="modal-title"><?php echo $picname ?></h5>
+                              <div class="modal-title">
+                                <div class="row">
+                                  <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $cupic ?>" class="centered-and-cropped ml-2" width="30" height="30">
+                                  <h5 class="modal-title ml-2"><?php echo $cuname ?></h5>
+                                </div>
+                              </div>
+                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
                             </div>
                             <div class="modal-body">
                               <div class="img-container">
-                                <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image">
+                                <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image">
                                 <div class="overlay">
                                   <span><h1>SPMS&copy;</h1></span>
                                 </div>
                               </div>
+                              <h5 class="mt-3"><?php echo $cpdetail ?></h5>
+                              <?php 
+                                foreach ($cptag as $value) {
+                                  $value2 = ucfirst(strtolower($value));
+                                  ?><a href="#" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                                }
+                              ?>
                             </div>
                             <div class="modal-footer">
-                              <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                              <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                           </div>
                         </div>

@@ -53,9 +53,10 @@ class Admin_controller extends CI_Controller {
         function photo_update($pid)
         {
             $pname = $this->input->post('editname');
+            $pdetail = $this->input->post('editdetail');
 
             $this->load->model('photographer_model');
-            $this->photographer_model->update_photo($pid, $pname);
+            $this->photographer_model->update_photo($pid, $pname, $pdetail);
             
             //$this->photo_manage();  
             

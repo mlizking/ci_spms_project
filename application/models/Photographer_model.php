@@ -29,9 +29,10 @@ class Photographer_model extends CI_Model
         $this -> db -> delete('pictures');
     }
 
-    function update_photo($id, $name)
+    function update_photo($id, $name, $detail)
     {
         $this->db->set('p_name', $name);
+        $this->db->set('p_detail', $detail);
         $this->db->where('p_id', $id);
         $this->db->update('pictures');
     }

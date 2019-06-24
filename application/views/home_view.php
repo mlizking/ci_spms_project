@@ -23,6 +23,11 @@
                 
                      $filename = $row->p_filename;
                      $picname = $row->p_name;
+                     $pdetail = $row->p_detail;
+
+                     $tag = $row->p_tag;
+                     $ptag = explode(",",$tag);
+
                      $id = $row->p_id;
                      $uname = $row->u_name;
                      $upic = $row->u_profilepic;
@@ -50,16 +55,24 @@
                               </div>
                               <h5 class="modal-title"><?php echo $picname ?></h5>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body text-center">
                               <div class="img-container">
                                 <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image">
                                 <div class="overlay">
                                   <span><h1>SPMS&copy;</h1></span>
                                 </div>
                               </div>
+                              <h5 class="mt-3"><?php echo $pdetail ?></h5>
+                              <?php 
+                                foreach ($ptag as $value) {
+                                  $value2 = ucfirst(strtolower($value));
+                                  ?><a href="#" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                                }
+                              ?>
                             </div>
                             <div class="modal-footer">
                               <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                           </div>
                         </div>

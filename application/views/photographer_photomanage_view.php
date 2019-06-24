@@ -40,6 +40,7 @@
           foreach ($photodata->result() as $row) {
             $filename = $row->p_filename;
             $picname = $row->p_name;
+            $picdetail = $row->p_detail;
             $id = $row->p_id;  
         ?>
 
@@ -65,6 +66,11 @@
                                   <div class="form-group">
                                       <label for="editname">Picture name</label>
                                       <input type="text" class="form-control" name="editname" id="editname" placeholder="Enter picture name" value="<?php echo $picname ?>" required>
+                                      <?php //echo form_error('loginemail'); ?>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="editdetail">Picture detail</label>
+                                      <input type="text" class="form-control" name="editdetail" id="editdetail" placeholder="Enter picture detail" value="<?php echo $picdetail ?>" required>
                                       <?php //echo form_error('loginemail'); ?>
                                   </div>
                                   
