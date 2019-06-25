@@ -9,7 +9,8 @@
 
     <!-- icon -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+    <script src="https://kit.fontawesome.com/03467e05f8.js"></script>
+
     <!-- Stylesheet -->
     
     <link href="<?php echo base_url(); ?>assets/tagsinput.css" rel="stylesheet" type="text/css">

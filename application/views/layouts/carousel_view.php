@@ -54,10 +54,13 @@
                                   <h5 class="modal-title ml-2"><?php echo $cuname ?></h5>
                                 </div>
                               </div>
-                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                             </div>
                             <div class="modal-body">
-                              <div class="img-container">
+                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
+                              <div class="img-container mt-3 mb-3">
                                 <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image">
                                 <div class="overlay">
                                   <span><h1>SPMS&copy;</h1></span>
@@ -110,10 +113,13 @@
                                   <h5 class="modal-title ml-2"><?php echo $cuname ?></h5>
                                 </div>
                               </div>
-                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                             </div>
                             <div class="modal-body">
-                              <div class="img-container">
+                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
+                              <div class="img-container mt-3 mb-3">
                                 <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image">
                                 <div class="overlay">
                                   <span><h1>SPMS&copy;</h1></span>
