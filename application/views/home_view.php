@@ -83,7 +83,7 @@
                                 <a href="<?php //echo site_url('picture_controller/select_picture') ?>"><i class="fas fa-info-circle"></i> More info.</a>
                               <?php //} ?> -->
                               <div class="container text-center">
-                                <a class="btn btn-primary" href="<?php echo site_url('picture_controller/select_picture') ?>"><i class="fas fa-info-circle"></i> More info.</a> 
+                                <a class="btn btn-primary" href="<?php echo site_url('picture_controller/select_picture/'.$id) ?>"><i class="fas fa-info-circle"></i> More info.</a> 
                               </div>  
                             </div>
                           </div>
