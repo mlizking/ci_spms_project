@@ -1,10 +1,3 @@
-<?php 
-    // $i = 0;
-    // foreach ($random_data->result() as $row) {
-    //   echo $row->p_filename.' i = '.$i.' '; $i++;
-    // } 
-?>
-
 <div class="bd-example mb-3 mt-3">
   <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -26,6 +19,15 @@
         $cid = $row->p_id;
         $cuname = $row->u_name;
         $cupic = $row->u_profilepic;
+
+        $passdata = array(
+          'id' => $cid, 
+          'filename' => $cfilename, 
+          'picname' => $cpicname, 
+          'ptag' => $cptag,
+          'upic' => $cupic,
+          'uname' => $cuname
+        );
         
         if($i == 0){ ?>
 
@@ -43,48 +45,10 @@
             </div>
           </div>
 
-                      <!-- Modal -->
-                      <div class="modal fade" id="imgModalCenter<?php echo $cid ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <div class="modal-title">
-                                <div class="row">
-                                  <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $cupic ?>" class="centered-and-cropped ml-2" width="30" height="30">
-                                  <h5 class="modal-title ml-2"><?php echo $cuname ?></h5>
-                                </div>
-                              </div>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
-                              <div class="img-container mt-3 mb-3">
-                                <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image">
-                                <div class="overlay">
-                                  <span><h1>SPMS&copy;</h1></span>
-                                </div>
-                              </div>
-                              <h5 class="mt-3"><?php echo $cpdetail ?></h5>
-                              <?php 
-                                foreach ($cptag as $value) {
-                                  $value2 = ucfirst(strtolower($value));
-                                  ?><a href="<?php echo site_url('search_controller/tag_search/'.$value2) ?>" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
-                                }
-                              ?>
-                            </div>
-                            <div class="modal-footer">
-                              <?php if($this->session->userdata('email') != ''){ ?>
-                                <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                              <?php }else{ ?>
-                                <a href="<?php echo site_url('userlogin_controller') ?>"><h5>Please login to download this picture.</h5></a>
-                              <?php } ?>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+          <!-- Modal -->
+          <?php
+            $this->load->view('layouts/modal_view', $passdata);
+          ?> 
 
         <?php $i++;}else{ ?>
 
@@ -102,48 +66,10 @@
             </div>
           </div>
 
-                      <!-- Modal -->
-                      <div class="modal fade" id="imgModalCenter<?php echo $cid ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header text-center">
-                              <div class="modal-title">
-                                <div class="row">
-                                  <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $cupic ?>" class="centered-and-cropped ml-2" width="30" height="30">
-                                  <h5 class="modal-title ml-2"><?php echo $cuname ?></h5>
-                                </div>
-                              </div>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <h5 class="modal-title"><?php echo $cpicname ?></h5>
-                              <div class="img-container mt-3 mb-3">
-                                <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $cfilename ?>" alt="Responsive image">
-                                <div class="overlay">
-                                  <span><h1>SPMS&copy;</h1></span>
-                                </div>
-                              </div>
-                              <h5 class="mt-3"><?php echo $cpdetail ?></h5>
-                              <?php 
-                                foreach ($cptag as $value) {
-                                  $value2 = ucfirst(strtolower($value));
-                                  ?><a href="<?php echo site_url('search_controller/tag_search/'.$value2) ?>" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
-                                }
-                              ?>
-                            </div>
-                            <div class="modal-footer">
-                              <?php if($this->session->userdata('email') != ''){ ?>
-                                <a href="<?php echo site_url('home_controller/picdownload/'.$cfilename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                              <?php }else{ ?>
-                                <a href="<?php echo site_url('userlogin_controller') ?>"><h5>Please login to download this picture.</h5></a>
-                              <?php } ?>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+          <!-- Modal -->
+          <?php
+            $this->load->view('layouts/modal_view', $passdata);
+          ?> 
 
         <?php }
       } ?>

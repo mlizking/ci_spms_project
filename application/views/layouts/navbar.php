@@ -16,11 +16,17 @@
         <a class="nav-link" href="<?php echo site_url('photographer_controller') ?>">Photographer</a>
       </li>
     </ul>
+    
+    <div class="dropdown-divider"></div>
     <ul class="navbar-nav mr-auto">
+      <li class="navbar-brand">
+        <i class="fas fa-search"></i>
+      </li>
       <li class="nav-item">
         <?php $this->load->view('layouts/searchbar_view'); ?>
       </li>
     </ul>
+    <div class="dropdown-divider"></div>
 
     <div class="form-inline my-2 my-lg-0">
       

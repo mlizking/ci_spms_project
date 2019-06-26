@@ -9,7 +9,14 @@
 </head>
 <body>
    
-<input type="text" class="form-control" data-role="tagsinput" value="jQuery,Script,Net">
+    <?php
+        foreach($picdata as $row)
+        {   
+            echo $row->p_id;
+        }
+    ?>
+    <?php print_r(array_keys($picdata)) ?>
+
 
 </body>
 </html>

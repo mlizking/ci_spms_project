@@ -24,7 +24,7 @@ class Profile_controller extends CI_Controller {
             $this->profile_model->updateuser_data($uid, $uname);
             
             //$this->index();
-            redirect(site_url('rrofile_controller'));            
+            redirect(site_url('profile_controller'));            
         }
 
 
