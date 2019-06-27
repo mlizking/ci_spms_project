@@ -5,9 +5,9 @@
             <div class="modal-header">
                 <div class="modal-title">
                     <div class="row">
-                        <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped ml-2" width="30" height="30">
-                        <h5 class="modal-title ml-2"><?php echo $uname ?></h5>
-                        <button type="button" class="btn btn-outline-info ml-2">follow</button>
+                        <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped ml-2 mt-2" width="30" height="30">
+                        <h5 class="modal-title ml-2 mt-2"><?php echo $uname ?></h5>
+                        <button type="button" class="btn btn-outline-info ml-2 mt-2">follow</button>
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

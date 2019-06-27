@@ -1,4 +1,7 @@
 <style>
+.centered-and-cropped { 
+    object-fit: cover 
+}
 .img-container{
   position:relative;
   display:inline-block;

@@ -42,10 +42,45 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-3">        
-            <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-primary">Download</button></a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 mt-3">
+                <div class="card">
+                    <h5 class="card-header">ช่างภาพ</h5>
+                    <div class="card-body">
+                        <div class="row ml-3">
+                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
+                            <div class="col my-auto">
+                                <h5 class="modal-title"><?php echo $uname ?></h5>
+                                <button type="button" class="btn btn-outline-info mt-2">follow</button>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <div class="card">
+                    <h5 class="card-header">รายละเอียดรูปภาพ</h5>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p><?php echo $pdetail ?></p>
+                            <footer class="blockquote-footer text-right"><cite title="Source Title"><?php echo $picname ?></cite></footer>
+                        </blockquote>
+                    </div>
+                </div> 
+            </div>  
+        </div>           
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">Download</button></a>         
         </div>
     </div>
+    
+        
 
 
     <?php $this->load->view('layouts/footer'); ?>
