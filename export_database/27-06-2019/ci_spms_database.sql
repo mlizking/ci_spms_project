@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2019 at 11:27 AM
+-- Generation Time: Jun 28, 2019 at 04:16 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -114,7 +114,8 @@ INSERT INTO `pictures` (`p_id`, `p_name`, `p_filename`, `p_detail`, `p_tag`, `u_
 (63, 'กุ้งก้ามกราม', '3qqqqqqqq20190625_003928AM.jpg', 'กุ้งก้ามกรามในถังน้ำ', 'shrimp,food,animal', 3, '2019-06-24 17:39:28', '0000-00-00 00:00:00'),
 (64, 'Min Min', '3qqqqqqqq20190627_161246PM.jpg', 'ถ่ายกับมิน', 'sister,university,friend', 3, '2019-06-27 09:12:46', '0000-00-00 00:00:00'),
 (65, 'ต่ายจ๋อมก้อย', '3qqqqqqqq20190627_161504PM.jpg', 'ถ่ายกับ ก้อย จ๋อม ต่าย', 'friend,university,portrait,forever', 3, '2019-06-27 09:15:04', '0000-00-00 00:00:00'),
-(66, 'เพื่อนๆของฉัน', '3qqqqqqqq20190627_161613PM.jpg', 'เพื่อนๆ รหัส 56', 'friend,university,people,forever', 3, '2019-06-27 09:16:13', '0000-00-00 00:00:00');
+(66, 'เพื่อนๆของฉัน', '3qqqqqqqq20190627_161613PM.jpg', 'เพื่อนๆ รหัส 56', 'friend,university,people,forever', 3, '2019-06-27 09:16:13', '0000-00-00 00:00:00'),
+(67, 'Whisky', '3PimchanokKongdee20190627_211848PM.jpg', 'Whisky in glass', 'drink,whisky,glass', 3, '2019-06-27 14:18:48', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -202,7 +203,7 @@ ALTER TABLE `userstatus`
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `users`
