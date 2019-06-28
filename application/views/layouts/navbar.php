@@ -8,12 +8,13 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('story_controller') ?>">Story</a>
+        <!-- <a class="nav-link" href="<?php //echo site_url('story_controller') ?>">Story</a> -->
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('photographer_controller') ?>">Photographer</a>
+        <!-- <a class="nav-link" href="<?php //echo site_url('photographer_controller') ?>">Photographer</a> -->
       </li>
     </ul>
     
@@ -93,13 +94,4 @@
   </div>
 </nav>
 
-<?php 
-  if($this->session->userdata('statusid') == '1')
-  {
-?>
 
-
-
-<?php
-  } 
-?>

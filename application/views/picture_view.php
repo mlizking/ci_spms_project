@@ -38,45 +38,85 @@
             <div class="img-container">
                 <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid" alt="Responsive image">
                 <div class="overlay text-center">
-                    <span><h1>SPMS&copy;</h1></span>
+                    <span><h1><?php echo $picname ?></h1></span>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 mt-3">
-                <div class="card">
-                    <h5 class="card-header">ช่างภาพ</h5>
-                    <div class="card-body">
-                        <div class="row ml-3">
-                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
-                            <div class="col my-auto">
-                                <h5 class="modal-title"><?php echo $uname ?></h5>
-                                <button type="button" class="btn btn-outline-info mt-2">follow</button>
-                            </div>
-                        </div>   
-                    </div>
+    <div class="container mt-3">                 
+        <div class="card-columns">
+             <div class="card">
+                <h5 class="card-header">คำอธิบายรูปภาพ</h5>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p><?php echo $pdetail ?></p>
+                        <footer class="blockquote-footer text-right"><cite title="Source Title"><?php echo $picname ?></cite></footer>
+                    </blockquote>
                 </div>
             </div>
-            <div class="col-sm-6 mt-3">
-                <div class="card">
-                    <h5 class="card-header">รายละเอียดรูปภาพ</h5>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p><?php echo $pdetail ?></p>
-                            <footer class="blockquote-footer text-right"><cite title="Source Title"><?php echo $picname ?></cite></footer>
-                        </blockquote>
-                    </div>
-                </div> 
-            </div>  
-        </div>           
-    </div>
+            <div class="card">
+                <h5 class="card-header">Tag ที่เกี่ยวข้อง</h5>
+                <div class="card-body">
+                    <?php 
+                    foreach ($pictag as $value) {
+                        $value2 = ucfirst(strtolower($value));
+                        ?><a href="<?php echo site_url('search_controller/tag_search/'.$value2) ?>" class="badge badge-dark ml-1 mr-1"><?php  echo $value2 ?></a><?php
+                    }
+                    ?>
+                </div>
+            </div> 
+            <div class="card">
+                <h5 class="card-header">ช่างภาพ</h5>
+                <div class="card-body">
+                    <div class="row ml-3">
+                        <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
+                        <div class="col my-auto">
+                            <h5 class="modal-title"><?php echo $uname ?></h5>
+                            <button type="button" class="btn btn-outline-info mt-2">follow</button>
+                        </div>
+                    </div>   
+                </div>
+            </div>   
+            <div class="card">
+                <h5 class="card-header">ช่างภาพ</h5>
+                <div class="card-body">
+                    <div class="row ml-3">
+                        <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
+                        <div class="col my-auto">
+                            <h5 class="modal-title"><?php echo $uname ?></h5>
+                            <button type="button" class="btn btn-outline-info mt-2">follow</button>
+                        </div>
+                    </div>   
+                </div>
+            </div>          
+            <div class="card p-3">
+                <blockquote class="blockquote mb-0 card-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </p>
+                <footer class="blockquote-footer">
+                    <small class="text-muted">
+                    Someone famous in <cite title="Source Title">Source Title</cite>
+                    </small>
+                </footer>
+                </blockquote>
+            </div>
+        </div>  
+    </div>                     
 
-    <div class="container">
+    <div class="container mt-3">
         <div class="row justify-content-center">
-            <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">Download</button></a>         
+            <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">ดาวน์โหลดภาพนี้ <i class="fas fa-file-download"></i></button></a>         
         </div>
     </div>
     
@@ -87,3 +127,26 @@
     <?php $this->load->view('layouts/script_body'); ?>
 </body>
 </html>
+
+<style>  
+    @media (min-width:576px) {
+        .card-columns {
+        column-count: 1;
+        }
+    }
+    @media (min-width:768px) {
+        .card-columns {
+        column-count: 1;
+        }
+    }
+    @media (min-width:992px) {
+        .card-columns {
+        column-count: 2;
+        }
+    }
+    @media (min-width:1200px) {
+        .card-columns {
+        column-count: 2;
+        }
+    }
+</style>
