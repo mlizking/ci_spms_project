@@ -51,7 +51,7 @@
             <a class="dropdown-item" href="<?php echo site_url('admin_controller/user_manage') ?>">User Manage</a>
             <a class="dropdown-item" href="<?php echo site_url('admin_controller/photo_manage') ?>">Photo Manage</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">ggggggg</a>
+            <a class="dropdown-item" href="#">#####</a>
           </div>
         </li>
 
@@ -66,7 +66,7 @@
             <a class="dropdown-item" href="<?php echo site_url('photographer_controller/manage_photo') ?>">Photo Manage</a>
             <a class="dropdown-item" href="<?php echo site_url('upload_controller') ?>">Upload</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">ggggggg</a>
+            <a class="dropdown-item" href="#">#####</a>
           </div>
         </li>
 
@@ -81,10 +81,10 @@
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('userregister_controller') ?>">Register</a>
+          <a class="nav-link" href="<?php echo site_url('userregister_controller') ?>">สมัครสมาชิก</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">Login</a>
+          <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">เข้าสู่ระบบ</a>
         </li>
       </ul>
 

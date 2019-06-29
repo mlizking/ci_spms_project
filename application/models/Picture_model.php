@@ -9,4 +9,13 @@ class Picture_model extends CI_Model
         $query = $this->db->get('pictures');
         return $query;
     }
+
+    function random_relatepicture($tag)
+    {
+        $this->db->like('p_tag', $tag, 'both');
+        $this->db->order_by('rand()');
+        $this->db->limit(5);
+        $query = $this->db->get('pictures');
+        return $query;
+    }
 }

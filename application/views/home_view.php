@@ -6,7 +6,9 @@
 </head>
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
+    
     <div class="container-fluid">
+
     <!-- Carousel -->
     <?php $this->load->view('layouts/carousel_view'); ?>
 

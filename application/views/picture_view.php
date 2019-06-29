@@ -119,7 +119,31 @@
             <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">ดาวน์โหลดภาพนี้ <i class="fas fa-file-download"></i></button></a>         
         </div>
     </div>
-    
+        
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <h5>รูปภาพที่เกี่ยวข้อง</h5>
+        </div>
+        <div class="row justify-content-center">     
+    <!-- random select photo with relate tag -->
+    <?php 
+        //echo count($pictag);        
+        $this->load->model('picture_model');
+        $data['relatedata'] = $this->picture_model->random_relatepicture($pictag[0]);
+        foreach ($data['relatedata']->result() as $row) 
+        {
+    ?>
+            <div class="img-container">
+                <img src="<?php echo base_url(); ?>uploads/<?php echo $row->p_filename ?>" class="centered-and-cropped" width="200" height="200" alt="Responsive image">
+                <div class="overlay text-center">
+                    <span><h1><?php echo $row->p_name ?></h1></span>
+                </div>
+            </div>
+    <?php
+        }
+    ?>
+        </div>
+    </div>
         
 
 
