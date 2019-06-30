@@ -78,38 +78,25 @@
                     </div>   
                 </div>
             </div>   
-            <div class="card">
-                <h5 class="card-header">ช่างภาพ</h5>
-                <div class="card-body">
-                    <div class="row ml-3">
-                        <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
-                        <div class="col my-auto">
-                            <h5 class="modal-title"><?php echo $uname ?></h5>
-                            <button type="button" class="btn btn-outline-info mt-2">follow</button>
-                        </div>
-                    </div>   
-                </div>
-            </div>          
+
             <div class="card p-3">
-                <blockquote class="blockquote mb-0 card-body">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                </p>
-                <footer class="blockquote-footer">
-                    <small class="text-muted">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
-                    </small>
-                </footer>
-                </blockquote>
+                <div class="form-group">
+                    <label for="picTextarea"><h5>โปรดบอกเราว่าคุณต้องการนำรูปภาพไปใช้ทำอะไร ?</h5></label>
+                    <textarea class="form-control" id="picTextarea" rows="3" placeholder="กรอกข้อความที่นี่"></textarea>
+                </div>  
+
+                <div class="card text-center">
+                    <blockquote class="blockquote mb-0 card-body">
+                    <p>" ใช้เพื่อการศึกษา "</p>
+                    <footer class="blockquote-footer">
+                        <small class="text-muted">
+                            <cite title="Source Title"><?php echo $uname ?></cite>
+                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="30" height="30">
+                        </small>
+                    </footer>
+                    </blockquote> 
+                </div>  
+                
             </div>
         </div>  
     </div>                     
@@ -133,7 +120,7 @@
         foreach ($data['relatedata']->result() as $row) 
         {
     ?>
-            <div class="img-container">
+            <div class="img-container ml-1 mr-1 mt-1">
                 <img src="<?php echo base_url(); ?>uploads/<?php echo $row->p_filename ?>" class="centered-and-cropped" width="200" height="200" alt="Responsive image">
                 <div class="overlay text-center">
                     <span><h1><?php echo $row->p_name ?></h1></span>

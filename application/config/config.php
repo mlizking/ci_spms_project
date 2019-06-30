@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $config['base_url'] = 'http://192.168.137.1/ci_spms_project/';
 // $config['base_url'] = 'http://10.33.12.25/ci_spms_project/';
 // $config['base_url'] = 'http://192.168.1.244/ci_spms_project/';
-$config['base_url'] = 'http://192.168.1.101/ci_spms_project/';
+$config['base_url'] = 'http://192.168.1.102/ci_spms_project/';
 
 
 /*
