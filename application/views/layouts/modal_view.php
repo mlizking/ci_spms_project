@@ -49,9 +49,45 @@
                 <?php //}else{ ?>
                 <a href="<?php //echo site_url('picture_controller/select_picture') ?>"><i class="fas fa-info-circle"></i> More info.</a>
                 <?php //} ?> -->
-                <div class="container text-center">
-                    <a class="btn btn-info" href="<?php echo site_url('picture_controller/select_picture/'.$id) ?>"><i class="fas fa-info-circle"></i> More info.</a> 
-                </div>  
+
+                <!-- random select photo with relate tag -->     
+                <div class="container mt-3">
+                    <div class="row justify-content-center">
+                        <h5>รูปภาพที่เกี่ยวข้อง</h5>
+                    </div>
+                    <div class="row justify-content-center">     
+                <?php 
+        
+                    $check = array($id); 
+                    // print_r($check);
+                    $arraycount = count($ptag);
+                    // echo $arraycount;
+                    for($count = 0; $count < $arraycount; $count++){      
+                        $CI =& get_instance();
+                        $CI->load->model('picture_model');
+                        // echo $ptag[$count];
+                        $tagdata['relatedata'] = $CI->picture_model->random_relatepicture($ptag[$count]);
+                        foreach ($tagdata['relatedata']->result() as $row) 
+                        {
+                            if(in_array($row->p_id, $check) != 1){
+                ?>
+                                <div class="img-container ml-1 mr-1 mt-1">
+                                    <img src="<?php echo base_url(); ?>uploads/<?php echo $row->p_filename ?>" class="centered-and-cropped rounded" width="200" height="100" alt="Responsive image">
+                                    <a href="<?php echo site_url('picture_controller/select_picture/'.$row->p_id) ?>">
+                                        <div class="overlay text-center">
+                                            <span><h1>SPMS&copy;</h1></span>
+                                        </div>
+                                    </a>
+                                </div>
+                <?php
+                                array_push($check, $row->p_id);
+                            }
+                        }
+                    }
+                ?>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

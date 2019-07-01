@@ -18,4 +18,10 @@ class Picture_model extends CI_Model
         $query = $this->db->get('pictures');
         return $query;
     }
+
+    function allselect()
+    {
+        $query = $this->db->get('pictures');
+        return $query;
+    }
 }

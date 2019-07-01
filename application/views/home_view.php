@@ -34,7 +34,7 @@
                      $uname = $row->u_name;
                      $upic = $row->u_profilepic;
 
-                     $passdata = array(
+                     $passdatahome = array(
                        'id' => $id, 
                        'filename' => $filename, 
                        'picname' => $picname, 
@@ -55,7 +55,7 @@
 
                     <!-- Modal -->
                     <?php
-                      $this->load->view('layouts/modal_view', $passdata);
+                      $this->load->view('layouts/modal_view', $passdatahome);
                     ?>  
 
             <?php

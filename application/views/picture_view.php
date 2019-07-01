@@ -99,35 +99,47 @@
                 
             </div>
         </div>  
-    </div>                     
-
+    </div>    
+              
     <div class="container mt-3">
         <div class="row justify-content-center">
             <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">ดาวน์โหลดภาพนี้ <i class="fas fa-file-download"></i></button></a>         
         </div>
     </div>
         
+    <!-- random select photo with relate tag -->     
     <div class="container mt-3">
         <div class="row justify-content-center">
             <h5>รูปภาพที่เกี่ยวข้อง</h5>
         </div>
         <div class="row justify-content-center">     
-    <!-- random select photo with relate tag -->
     <?php 
-        //echo count($pictag);        
-        $this->load->model('picture_model');
-        $data['relatedata'] = $this->picture_model->random_relatepicture($pictag[0]);
-        foreach ($data['relatedata']->result() as $row) 
-        {
+        //echo count($pictag);
+        $check = array($picid); 
+        //print_r($check);           
+
+        $arraycount = count($pictag);
+        for($count = 0; $count < $arraycount; $count++){      
+            $this->load->model('picture_model');
+            $data['relatedata'] = $this->picture_model->random_relatepicture($pictag[$count]);
+            foreach ($data['relatedata']->result() as $row) 
+            {
+                if(in_array($row->p_id, $check) != 1){
     ?>
-            <div class="img-container ml-1 mr-1 mt-1">
-                <img src="<?php echo base_url(); ?>uploads/<?php echo $row->p_filename ?>" class="centered-and-cropped" width="200" height="200" alt="Responsive image">
-                <div class="overlay text-center">
-                    <span><h1><?php echo $row->p_name ?></h1></span>
+                <div class="img-container ml-1 mr-1 mt-1">
+                    <img src="<?php echo base_url(); ?>uploads/<?php echo $row->p_filename ?>" class="centered-and-cropped rounded" width="300" height="200" alt="Responsive image">
+                    <a href="<?php echo site_url('picture_controller/select_picture/'.$row->p_id) ?>">
+                        <div class="overlay text-center">
+                            <span><h1>SPMS&copy;</h1></span>
+                        </div>
+                    </a>
                 </div>
-            </div>
     <?php
+                    array_push($check, $row->p_id);
+                }
+            }
         }
+        //print_r($check);  
     ?>
         </div>
     </div>

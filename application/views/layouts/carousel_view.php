@@ -20,7 +20,7 @@
         $cuname = $row->u_name;
         $cupic = $row->u_profilepic;
 
-        $passdata = array(
+        $passdatacarousel = array(
           'id' => $cid, 
           'filename' => $cfilename, 
           'picname' => $cpicname, 
@@ -47,7 +47,7 @@
 
           <!-- Modal -->
           <?php
-            $this->load->view('layouts/modal_view', $passdata);
+            $this->load->view('layouts/modal_view', $passdatacarousel);
           ?> 
 
         <?php $i++;}else{ ?>
@@ -68,7 +68,7 @@
 
           <!-- Modal -->
           <?php
-            $this->load->view('layouts/modal_view', $passdata);
+            $this->load->view('layouts/modal_view', $passdatacarousel);
           ?> 
 
         <?php }
