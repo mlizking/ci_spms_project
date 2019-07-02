@@ -18,24 +18,27 @@
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-5 mt-5 ml-5 mr-5">
         <div class="card text-center border-dark">
             <div class="card-header">
-                Login
+                เข้าสู่ระบบ
             </div>
             <div class="card-body">
                 <?php echo form_open('userlogin_controller/login_validation'); ?> 
                 <!-- Form -->
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" name="loginemail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo set_value('loginemail'); ?>" required>
+                        <label for="exampleInputEmail1">อีเมล</label>
+                        <input type="email" class="form-control" name="loginemail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรอกอีเมลที่นี่" value="<?php echo set_value('loginemail'); ?>" required>
                         <?php echo form_error('loginemail'); ?>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" name="loginpassword" id="exampleInputPassword1" placeholder="Enter password" value="<?php echo set_value('loginpassword'); ?>" required>
+                        <label for="exampleInputPassword1">รหัสผ่าน</label>
+                        <input type="password" class="form-control" name="loginpassword" id="exampleInputPassword1" placeholder="กรอกรหัสผ่านที่นี่" value="<?php echo set_value('loginpassword'); ?>" required>
                         <?php echo form_error('loginpassword'); ?>
                     </div>
                     <p class="mb-2"><?php echo $this->session->flashdata("error"); ?></p>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success">เข้าสู่ระบบ</button>
                 </form>
+            </div>
+            <div class="card-footer text-muted">
+                ยังไม่มีบัญชีผู้ใช้ ? <a href="<?php echo site_url('userregister_controller') ?>">สมัครสมาชิก</a>
             </div>
         </div>
     <div>

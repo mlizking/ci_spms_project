@@ -80,11 +80,39 @@
             </div>   
 
             <div class="card p-3">
-                <div class="form-group">
-                    <label for="picTextarea"><h5>โปรดบอกเราว่าคุณต้องการนำรูปภาพไปใช้ทำอะไร ?</h5></label>
-                    <textarea class="form-control" id="picTextarea" rows="3" placeholder="กรอกข้อความที่นี่"></textarea>
-                </div>  
+                <?php echo form_open('picture_controller/insertpermissioncomment/'.$picid); ?> 
+                <!-- Form -->
+                    <div class="form-group">
+                        <label for="picTextarea"><h5>โปรดบอกเราว่าคุณต้องการนำรูปภาพไปใช้ทำอะไร ?</h5></label>
+                        <textarea class="form-control" id="picTextarea" name="picTextarea" rows="3" placeholder="กรอกข้อความที่นี่"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-info" type="submit">ส่งข้อความ</button>
+                    </div>  
+                </form>
 
+                <?php 
+                    $this->load->model('picture_model');
+                    $data['permissiondata'] = $this->picture_model->select_permissioncomment($picid);
+                    foreach ($data['permissiondata']->result() as $row) 
+                    {
+                ?>
+
+                <div class="card text-center">
+                    <blockquote class="blockquote mb-0 card-body">
+                    <p>" <?php echo $row->pc_detail ?> "</p>
+                    <footer class="blockquote-footer">
+                        <small class="text-muted">
+                            <cite title="Source Title"><?php echo $row->u_name ?></cite>
+                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $row->u_profilepic ?>" class="centered-and-cropped rounded-circle" width="30" height="30">
+                        </small>
+                    </footer>
+                    </blockquote> 
+                </div>          
+
+                <?php         
+                    }
+                ?>    
                 <div class="card text-center">
                     <blockquote class="blockquote mb-0 card-body">
                     <p>" ใช้เพื่อการศึกษา "</p>
@@ -100,10 +128,11 @@
             </div>
         </div>  
     </div>    
-              
+
+    <!-- Download button -->
     <div class="container mt-3">
         <div class="row justify-content-center">
-            <a href="<?php echo site_url('home_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">ดาวน์โหลดภาพนี้ <i class="fas fa-file-download"></i></button></a>         
+            <a href="<?php echo site_url('picture_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">ดาวน์โหลดภาพนี้ <i class="fas fa-file-download"></i></button></a>         
         </div>
     </div>
         

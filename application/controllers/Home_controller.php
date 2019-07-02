@@ -23,27 +23,6 @@ class Home_controller extends CI_Controller {
                 
         }
 
-        function picdownload($filename)
-        {
-                // $data = array(
-                //         $path => $pic
-                // );
-                //$data['path'] = $pic ;
-                //$this->load->view('test_view', $data);
-                //echo $pic ;
-                //$path = base_url().'uploads/'.$pic;
-                //echo $path;
-
-
-                force_download(APPPATH.'../uploads/'.$filename, NULL);
-                //echo APPPATH.'../uploads/'.$pic;
-
-
-                //echo '<img class="img-fluid" src="'.$path.'" alt="Responsive image">';
-                //echo '<img class="img-fluid" src="../uploads/'.$pic.'" alt="Responsive image">';
-
-        }
-
         function test()
         {
                 $this->load->view('test_view');

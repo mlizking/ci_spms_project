@@ -39,6 +39,10 @@
           <a class="nav-link" href="<?php echo site_url('profile_controller') ?>"><?php echo $this->session->userdata('email') ?></a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('upload_controller') ?>">อัพโหลดรูปภาพ</a>
+        </li>
+
         <?php if($this->session->userdata('statusid') == '1')
         { ?>
         
@@ -73,7 +77,7 @@
         <?php } ?>  
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">Logout</a>
+          <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">ออกจากระบบ</a>
         </li>
       </ul>
 

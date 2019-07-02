@@ -8,20 +8,12 @@
     <?php $this->load->view('layouts/navbar'); ?>
     
     <div class="container-fluid">
-    <div class="container text-center mx-auto mb-3">
-        <h1>Search complete!!</h1>
-        <span class="badge badge-success">
-          <h3>Result of 
-            <span class="badge badge-light"><?php echo $title ?></span>
-          </h3>
-        </span>
-        <span class="badge badge-success">
-          <h3>has
-            <span class="badge badge-light"><?php echo $searchdata->num_rows() ?></span> items .
-          </h3
-        </span>  
-    </div>
-        
+      <div class="container text-center mt-2">
+        <h4>ผลการค้นหาของ "<?php echo $title ?>" พบ <?php echo $searchdata->num_rows() ?> รายการ</h4>
+      </div>
+
+      <div class="dropdown-divider"></div>
+
             <?php
               if($searchdata->num_rows() > 0)
               { 
@@ -81,7 +73,7 @@
               else
               {
         
-                echo '<div class="container text-center"><span class="badge badge-danger mt-3 mb-3"><h1>No Data Found!!</h1></span></div>';
+                echo '<div class="container text-center mt-3"><h1>ไม่พบรูปภาพที่ต้องการ !!</h1></div>';
                 
               }
             ?>
