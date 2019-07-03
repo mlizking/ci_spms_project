@@ -52,7 +52,7 @@
             <div class="col"><p>©2019</p></div>  
         </div>
         <div class="row">
-            <div class="col"><a href="https://www.facebook.com/rukmanee">facebook : ผู้พัฒนา</a></div>
+            <div class="col"><a class="text-light" href="https://www.facebook.com/rukmanee">facebook : ผู้พัฒนา</a></div>
             <div class="col"><p>Tel. 099-956-9599</p></div>  
         </div>
     </div>

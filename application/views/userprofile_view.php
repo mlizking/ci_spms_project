@@ -25,6 +25,8 @@
                 $status = $row->us_name;
 
     ?>
+    
+                <img src="<?php echo base_url(); ?>uploads/cover_picture/cover1.jpg" alt="Responsive image" class="centered-and-cropped" width=100% height="300">
                 <div class="container-fluid mt-3">
                     <div class="pt-3 pb-2 mb-3 border-bottom">
                         <div class="text-center">
@@ -57,6 +59,8 @@
                             <h3>STATUS : <span class="badge badge-info"><?php echo $status ?></span></h3>
                         </div>
                     </div>
+
+                    <?php if($this->session->userdata('userid') == $id){ ?>
                     <div class="row text-center mb-3">
                         <div class="col">
                             <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Edit</button>
@@ -94,6 +98,8 @@
 
                         </div>
                     </div>
+                    <?php } ?>
+
                 </div>           
 
 

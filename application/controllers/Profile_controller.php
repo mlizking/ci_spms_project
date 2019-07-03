@@ -26,6 +26,13 @@ class Profile_controller extends CI_Controller {
             //$this->index();
             redirect(site_url('profile_controller'));            
         }
+        
+        function photographer_profile($uid)
+        {
+            $this->load->model('profile_model');
+            $data['user_data'] = $this->profile_model->selectuser_data($uid) ;
 
+            $this->load->view('userprofile_view', $data);
+        }
 
 }

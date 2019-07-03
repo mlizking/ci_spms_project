@@ -2,13 +2,7 @@
 <html>
 <head>
     <?php $this->load->view('layouts/script_head'); ?>
-    <title>Hello !!</title>
-</head>
-<body>
-    <?php $this->load->view('layouts/navbar'); ?>
-  
     <?php 
-        $data['picdata'] = $picdata->result();
         foreach ($picdata->result() as $row) 
         {
             
@@ -20,13 +14,17 @@
             $tag = $row->p_tag;
             $pictag = explode(",",$tag);
 
+            $uid = $row->u_id;
             $uname = $row->u_name;
             $upic = $row->u_profilepic;   
 
-            
         }  
-        //echo $picid.$filename.$picname.$pdetail ;
     ?>
+    <title><?php echo $picname ?></title>
+</head>
+<body>
+    <?php $this->load->view('layouts/navbar'); ?>
+  
     <div class="container-fluid">
         <div class="row justify-content-center mt-3">
             <style>
@@ -67,12 +65,16 @@
                 </div>
             </div> 
             <div class="card">
-                <h5 class="card-header">ช่างภาพ</h5>
+                <h5 class="card-header">เจ้าของภาพ</h5>
                 <div class="card-body">
                     <div class="row ml-3">
-                        <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
+                        <a href="<?php echo site_url('profile_controller/photographer_profile/'.$uid) ?>">
+                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
+                        </a>
                         <div class="col my-auto">
-                            <h5 class="modal-title"><?php echo $uname ?></h5>
+                            <a class="text-dark" href="<?php echo site_url('profile_controller/photographer_profile/'.$uid) ?>">
+                                <h5 class="modal-title"><?php echo $uname ?></h5>
+                            </a>
                             <button type="button" class="btn btn-outline-info mt-2">follow</button>
                         </div>
                     </div>   
@@ -172,8 +174,6 @@
     ?>
         </div>
     </div>
-        
-
 
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>
