@@ -81,12 +81,13 @@
                 </div>
             </div>   
 
+            <!-- permisson comment -->
             <div class="card p-3">
                 <?php echo form_open('picture_controller/insertpermissioncomment/'.$picid); ?> 
                 <!-- Form -->
                     <div class="form-group">
                         <label for="picTextarea"><h5>โปรดบอกเราว่าคุณต้องการนำรูปภาพไปใช้ทำอะไร ?</h5></label>
-                        <textarea class="form-control" id="picTextarea" name="picTextarea" rows="3" placeholder="กรอกข้อความที่นี่"></textarea>
+                        <textarea class="form-control" id="picTextarea" name="picTextarea" rows="3" placeholder="กรอกข้อความที่นี่" required></textarea>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-info" type="submit">ส่งข้อความ</button>

@@ -5,12 +5,7 @@
     <title>Hello !!</title>
 </head>
 <body>
-<?php 
-    if($this->session->userdata('email') == '')
-    {   
-        redirect(site_url('home_controller'));
-    } 
-?>
+
     <?php $this->load->view('layouts/navbar'); ?>
   
     <?php
@@ -25,22 +20,16 @@
                 $status = $row->us_name;
 
     ?>
-    
-                <img src="<?php echo base_url(); ?>uploads/cover_picture/cover1.jpg" alt="Responsive image" class="centered-and-cropped" width=100% height="300">
-                <div class="container-fluid mt-3">
-                    <div class="pt-3 pb-2 mb-3 border-bottom">
-                        <div class="text-center">
-                        <h1 class="h2">User Profile</h1>
-                        </div>
+                <div class="coverphoto">
+                    <div class="blur-img">
+                        <img src="<?php echo base_url(); ?>uploads/cover_picture/cover1.jpg" alt="Responsive image" class="centered-and-cropped" width=100% height="400">
+                    </div>
+                    <div class="profile-overlay">                
+                        <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $profilepic ?>" class="rounded-circle centered-and-cropped" width="300" height="300" alt="Responsive image">
                     </div>
                 </div>
                 
                 <div class="container mt-3">
-                    <div class="row  mb-3">
-                        <div class="col text-center">
-                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $profilepic ?>" class="img-fluid rounded" width="500" alt="Responsive image">
-                        </div>
-                    </div>
                     <div class="row text-center mb-3">
                         <div class="col">
                             <h3>USER ID : <span class="badge badge-info"><?php echo $id ?></h3>                            
@@ -109,7 +98,7 @@
         }
         else
         {
-            echo 'No Data Found!!';
+            redirect(site_url('home_controller'));
         }
     ?>
     
@@ -124,5 +113,21 @@
     .centered-and-cropped { 
         object-fit: cover 
     }
+
+    .coverphoto{
+        position:relative;
+        display:inline-block;
+    }
+
+    .coverphoto .profile-overlay{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);  
+    }  
+    .blur-img{
+        filter: blur(2px);
+        /* -webkit-filter: blur(2px); */
+    }                                                         
 
 </style>
