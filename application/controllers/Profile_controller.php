@@ -6,9 +6,9 @@ class Profile_controller extends CI_Controller {
             $uid = $this->session->userdata('userid');
 
             $this->load->model('profile_model');
-
             $data['user_data'] = $this->profile_model->selectuser_data($uid) ;
-
+            $data['fetch_data'] = $this->profile_model->selectuser_photo($uid);
+            
             $this->load->view('userprofile_view', $data);
 
             //echo $data;
@@ -31,6 +31,8 @@ class Profile_controller extends CI_Controller {
         {
             $this->load->model('profile_model');
             $data['user_data'] = $this->profile_model->selectuser_data($uid) ;
+            $data['fetch_data'] = $this->profile_model->selectuser_photo($uid);
+            
 
             $this->load->view('userprofile_view', $data);
         }
