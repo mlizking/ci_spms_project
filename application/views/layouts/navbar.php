@@ -40,7 +40,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('upload_controller') ?>">อัพโหลดรูปภาพ</a>
+          <a class="btn btn-outline-success" href="<?php echo site_url('upload_controller') ?>">อัพโหลดรูปภาพ</a>
         </li>
 
         <?php if($this->session->userdata('statusid') == '1')

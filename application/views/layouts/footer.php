@@ -39,7 +39,7 @@
 </noscript>
 
 
-<footer class="footer bg-dark text-white mt-3">
+<footer class="footer bg-dark text-white mt-5">
     <div class="footer-copyright text-center py-3">
     <div class="container">
         <div class="row">

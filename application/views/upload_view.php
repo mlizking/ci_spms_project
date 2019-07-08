@@ -13,10 +13,9 @@
     ?>
     <?php $this->load->view('layouts/navbar'); ?>
 
-    <div class="container-fluid mt-3">
-        <center>
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-5 mt-5 ml-5 mr-5">
-                <div class="card text-center border-dark">
+    <div class="container-fluid">    
+            <div class="col-sm-9 col-md-7 mx-auto mt-5">
+                <div class="card border-dark">
                     <div class="card-header">
                         อัพโหลดรูปภาพ
                     </div>
@@ -25,13 +24,17 @@
                         <?php echo $error;?>
 
                         <?php echo form_open_multipart('upload_controller/upload_validation');?>
-                            <label>เลือกไฟล์ภาพ (ขนาดไม่เกิน 5mb)</label>
+                            <div class="form-group">
+                                <label for="picFile">เลือกไฟล์ภาพ (ขนาดไม่เกิน 5mb jpeg/jpg/png)</label><br>
+                                <input type="file" id="picFile" name="picFile" style="width: 250px" required></input>
+                            </div>
+                            <!-- <label>เลือกไฟล์ภาพ (ขนาดไม่เกิน 5mb jpeg/jpg/png)</label>
                             <div class="input-group mb-3">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="picFile" name="picFile" aria-describedby="picFile" required>
                                     <label class="custom-file-label" for="picFile"></label>
                                 </div>  
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="picName">ชื่อรูปภาพ</label>
                                 <input type="text" class="form-control" name="picName" id="picName" placeholder="กรอกชื่อรูปภาพที่นี่" value="<?php echo set_value('picName'); ?>" required>
@@ -47,14 +50,12 @@
                                 <textarea class="form-control" id="picDetail" name="picDetail" rows="3" placeholder="กรอกคำอธิบายรูปภาพที่นี่" value="<?php echo set_value('picDetail'); ?>" required></textarea>
                                 <?php echo form_error('picDetail'); ?>
                             </div>
-                            <button type="submit" class="btn btn-primary">อัพโหลด</button>  
-                            
+                            <button type="submit" class="btn btn-primary">อัพโหลด</button>                    
                         </form>
 
                     </div>
                 </div>
             </div>
-        </center>
     </div>
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>

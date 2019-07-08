@@ -15,6 +15,7 @@
             foreach ($user_data->result() as $row)
             {
                 $profilepic = $row->u_profilepic;
+                $coverpic = $row->u_coverpic;
                 $id = $row->u_id;
                 $email = $row->u_email;
                 $name = $row->u_name;
@@ -24,12 +25,15 @@
                 
                 <div class="coverphoto">
                     <div class="blur-img">
-                        <img src="<?php echo base_url(); ?>uploads/cover_picture/cover1.jpg" alt="Responsive image" class="centered-and-cropped" width=100% height="400">
+                        <img src="<?php echo base_url(); ?>uploads/cover_picture/<?php echo $coverpic ?>" alt="Responsive image" class="centered-and-cropped" width=100% height="400">
                     </div>
                     <div class="profile-overlay">
                         <div class="container text-center">                
                             <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $profilepic ?>" class="rounded-circle centered-and-cropped" width="300" height="300" alt="Responsive image">
                         </div>
+                    </div>
+                    <div class="cover-overlay">
+                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#coverphotoModal">อัพโหลดภาพปก</button>
                     </div>
                 </div>
                 
@@ -52,57 +56,51 @@
                 <div class="container-fluid mt-3">
                     <!-- Photo grid -->
                     <div class="card-columns">
-                            <?php
-                                if($fetch_data->num_rows() > 0)
-                                {
-                                foreach ($fetch_data->result() as $row) {
-                                
-                                    $filename = $row->p_filename;
-                                    $picname = $row->p_name;
-                                    $pdetail = $row->p_detail;
+                        <?php
+                        if($fetch_data->num_rows() > 0)
+                        {
+                            foreach ($fetch_data->result() as $row) {
+                            
+                                $filename = $row->p_filename;
+                                $picname = $row->p_name;
+                                $pdetail = $row->p_detail;
 
-                                    $tag = $row->p_tag;
-                                    $ptag = explode(",",$tag);
+                                $tag = $row->p_tag;
+                                $ptag = explode(",",$tag);
 
-                                    $id = $row->p_id;
-                                    $uname = $row->u_name;
-                                    $upic = $row->u_profilepic;
+                                $id = $row->p_id;
+                                $uname = $row->u_name;
+                                $upic = $row->u_profilepic;
 
-                                    $passdatahome = array(
-                                    'id' => $id, 
-                                    'filename' => $filename, 
-                                    'picname' => $picname, 
-                                    'ptag' => $ptag,
-                                    'upic' => $upic,
-                                    'uname' => $uname
-                                    );
-                                    //echo '<br>'.$filename;
-                            ?>
-                                    <div class="card">
-                                    <div class="img-container">
-                                        <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
-                                        <div class="overlay text-center" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
-                                            <span><h1><?php echo $picname ?></h1></span>
-                                        </div>
+                                $passdatahome = array(
+                                'id' => $id, 
+                                'filename' => $filename, 
+                                'picname' => $picname, 
+                                'ptag' => $ptag,
+                                'upic' => $upic,
+                                'uname' => $uname
+                                );
+                                //echo '<br>'.$filename;
+                        ?>
+                                <div class="card">
+                                <div class="img-container">
+                                    <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
+                                    <div class="overlay text-center" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
+                                        <span><h1><?php echo $picname ?></h1></span>
                                     </div>
-                                    </div>
+                                </div>
+                                </div>
 
-                                    <!-- Modal -->
-                                    <?php
-                                    $this->load->view('layouts/modal_view', $passdatahome);
-                                    ?>  
-
-                            <?php
-                                
-                                }
-                                }
-                                else
-                                {
-                        
-                                    echo 'No Data Found!!';
-                                
-                                }
-                            ?>
+                                <!-- Modal -->
+                                <?php
+                                $this->load->view('layouts/modal_view', $passdatahome);
+                            }
+                        }
+                        else
+                        {
+                            echo '<h3>ไม่มีรูปภาพให้แสดง</h3>';
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -114,7 +112,28 @@
             redirect(site_url('home_controller'));
         }
     ?>
-    
+
+<!-- Modal cover photo upload -->
+<div class="modal fade" id="coverphotoModal" tabindex="-1" role="dialog" aria-labelledby="coverphotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="coverphotoModalLabel">อัพโหลดภาพปก</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>
 </body>
@@ -138,7 +157,14 @@
         top:70%;
         left:50%;
         transform:translate(-50%,-50%);  
-    }  
+    }
+
+    .coverphoto .cover-overlay{
+        position:absolute;
+        top:10px;
+        right:10px;
+        /* transform:translate(-50%,-50%);   */
+    }    
 
     .blur-img{
         filter: blur(0px);
