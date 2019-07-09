@@ -50,7 +50,9 @@
                                 <textarea class="form-control" id="picDetail" name="picDetail" rows="3" placeholder="กรอกคำอธิบายรูปภาพที่นี่" value="<?php echo set_value('picDetail'); ?>" required></textarea>
                                 <?php echo form_error('picDetail'); ?>
                             </div>
-                            <button type="submit" class="btn btn-primary">อัพโหลด</button>                    
+                            <div class="card text-right">
+                                <button type="submit" class="btn btn-success">อัพโหลด</button>
+                            </div>                    
                         </form>
 
                     </div>

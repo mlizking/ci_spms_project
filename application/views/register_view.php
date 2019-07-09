@@ -13,10 +13,10 @@
     ?>
     <?php $this->load->view('layouts/navbar'); ?>
 
-    <center>
+    
 
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-5 mt-5 ml-5 mr-5">
-        <div class="card text-center border-dark">
+        <div class="card border-dark">
             <div class="card-header">
                 สมัครสมาชิก
             </div>
@@ -43,14 +43,17 @@
                         <input type="password" class="form-control" name="registerpassconf" id="Passwordconf" placeholder="กรอกยันยันรหัสผ่านที่นี่" value="<?php echo set_value('registerpassconf'); ?>" required>
                         <?php echo form_error('registerpassconf'); ?>
                     </div>
-                    <p class="mb-2"><?php //echo $this->session->flashdata("error"); ?></p>
-                    <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
+                    <!-- <p class="mb-2"><?php //echo $this->session->flashdata("error"); ?></p> -->
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success">สมัครสมาชิก</button>
+                    </div>
                 </form>
             </div>
+            
         </div>
     </div>
 
-    </center>
+    
 
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>

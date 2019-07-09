@@ -8,11 +8,25 @@ class Profile_controller extends CI_Controller {
             $this->load->model('profile_model');
             $data['user_data'] = $this->profile_model->selectuser_data($uid) ;
             $data['fetch_data'] = $this->profile_model->selectuser_photo($uid);
+            $data['error'] = '';
             
             $this->load->view('userprofile_view', $data);
 
             //echo $data;
        
+        }
+
+        public function witherror($error)
+        {
+            $uid = $this->session->userdata('userid');
+
+            $this->load->model('profile_model');
+            $data['user_data'] = $this->profile_model->selectuser_data($uid) ;
+            $data['fetch_data'] = $this->profile_model->selectuser_photo($uid);
+            $data['error'] = str_replace('%20', ' ', $error);
+
+            // echo $data['error'];
+            $this->load->view('userprofile_view', $data);
         }
 
         function edit_userprofile()
@@ -32,7 +46,7 @@ class Profile_controller extends CI_Controller {
             $this->load->model('profile_model');
             $data['user_data'] = $this->profile_model->selectuser_data($uid) ;
             $data['fetch_data'] = $this->profile_model->selectuser_photo($uid);
-            
+            $data['error'] = '';
 
             $this->load->view('userprofile_view', $data);
         }
