@@ -23,7 +23,7 @@
                 }
                 
                 if($row->u_coverpic == ''){
-                    $coverpic = '3000x3000.png';
+                    $coverpic = '3840x3840.png';
                 }else{
                     $coverpic = $row->u_coverpic;
                 }
