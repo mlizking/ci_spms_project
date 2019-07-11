@@ -30,7 +30,7 @@
             <style>
                 .img-fluid{
                     max-width: 100%;
-                    max-height: 500px;
+                    max-height: 1500px;
                 }
             </style>
             <div class="img-container">
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div class="container mt-3">                 
+    <div class="container-fluid mx-auto mt-3">                 
         <div class="card-columns">
              <div class="card">
                 <h5 class="card-header">คำอธิบายรูปภาพ</h5>
