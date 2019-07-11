@@ -2,7 +2,7 @@
 
 <?php echo form_open('search_controller/picture_search'); ?>
 
-    <div class="input-group">
+    <div class="form-group">
         <input type="text" class="form-control" name="picsearch" placeholder="ค้นหา" required>
     </div>
 

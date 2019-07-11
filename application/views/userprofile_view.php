@@ -16,38 +16,59 @@
         {
             foreach ($user_data->result() as $row)
             {
-                if($row->u_profilepic == ''){
-                    $profilepic = '1000x1000.png';
-                }else{
-                    $profilepic = $row->u_profilepic;
-                }
-                
-                if($row->u_coverpic == ''){
-                    $coverpic = '3840x3840.png';
-                }else{
-                    $coverpic = $row->u_coverpic;
-                }
-                $this->session->set_userdata('usercoveroic', $coverpic);
-
+                $profilepic = $row->u_profilepic;
+                $this->session->set_userdata('profilepic', $profilepic);
+                $coverpic = $row->u_coverpic;
+                $this->session->set_userdata('coverpic', $coverpic);
                 $id = $row->u_id;
                 $email = $row->u_email;
                 $name = $row->u_name;
                 $status = $row->us_name;
                 $address = $row->u_address;
     ?>
-                
+
                 <div class="coverphoto">
-                    <img src="<?php echo base_url(); ?>uploads/cover_picture/<?php echo $coverpic ?>" alt="Responsive image" class="centered-and-cropped" width=100% height="400">
+                    <div class="img-container" style="width: 100%">
+                    <?php if($coverpic != ''){ ?>
+                        <img src="<?php echo base_url(); ?>uploads/cover_picture/<?php echo $coverpic ?>" alt="Responsive image" class="centered-and-cropped" width=100% height="400">
+                    <?php }else{ ?>
+                        <img src="https://via.placeholder.com/3840?text=Replace+with+cover+picture+." alt="Responsive image" class="centered-and-cropped" width=100% height="400">
+                    <?php } ?>
+                        <div class="overlay">
+                            <span><h1>SPMS&copy;</h1></span>
+                        </div>
+                    </div>
+
                     <div class="profile-overlay">
-                        <div class="container text-center">                
-                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $profilepic ?>" class="rounded-circle centered-and-cropped" width="300" height="300" alt="Responsive image">
+                        <div class="container text-center">
+                        <div class="img-container">
+
+                            <!-- profile picture -->
+                            <?php if($profilepic != ''){ ?>                
+                                <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $profilepic ?>" class="rounded-circle centered-and-cropped" width="300" height="300" alt="Responsive image">                       
+                            <?php }else{ ?> 
+                                <img src="https://via.placeholder.com/2000?text=Replace+with+profile+picture+." class="rounded-circle centered-and-cropped" width="300" height="300" alt="Responsive image">                       
+                            <?php } ?>
+
+                            <!-- profile picture edit -->
+                            <?php if($this->session->userdata('userid') == $id){ ?>
+                                <div class="overlay rounded-circle" data-toggle="modal" data-target="#profilepicModal">
+                                    <span><h1>เปลี่ยนภาพโปรไฟล์</h1></span>
+                                </div>
+                            <?php }else{ ?>
+                                <div class="overlay rounded-circle">
+                                    <span><h1>SPMS&copy;</h1></span>
+                                </div>
+                            <?php } ?>
+
+                        </div>        
                         </div>
                     </div>
 
                     <?php if($this->session->userdata('userid') == $id){ ?>
-                    <div class="cover-overlay">
-                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#coverphotoModal">อัพโหลดภาพปก</button>
-                    </div>
+                        <div class="coveredit-overlay">
+                            <button class="btn btn-outline-warning" data-toggle="modal" data-target="#coverphotoModal">เปลี่ยนภาพปก</button>
+                        </div>
                     <?php } ?>
 
                 </div>
@@ -55,6 +76,9 @@
                 <div class="container-fluid text-center">
                     <h1><?php echo $name ?></h1>
                     <h5><i class="fas fa-map-marker-alt"></i> <?=$address?></h5>
+                    <?php if($this->session->userdata('userid') == $id){ ?>
+                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editprofileModal">แก้ไขข้อมูลผู้ใช้</button> 
+                    <?php } ?>
                     <div class="row mt-5">
                         <div class="col">
                             <h5><i class="fas fa-eye"></i> 100k</h5>
@@ -133,7 +157,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="coverphotoModalLabel">อัพโหลดภาพปก</h5>
+                <h5 class="modal-title" id="coverphotoModalLabel">เปลี่ยนภาพปก</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -142,13 +166,41 @@
                 <?php echo form_open_multipart('upload_controller/do_uploadcover');?>
                     <div class="form-group">
                         <label for="coverFile">เลือกไฟล์ภาพปก (ขนาดไม่เกิน 5mb jpeg/jpg/png)</label><br>
-                        <input type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="coverFile" name="coverFile" style="width: 250px" required></input>
+                        <input type="file" onchange="document.getElementById('outputcover').src = window.URL.createObjectURL(this.files[0])" id="coverFile" name="coverFile" style="width: 250px" required></input>
                         <div class="mt-3">
-                            <img id="output" class="centered-and-cropped" width="200" height="100"/>
+                            <img id="outputcover" class="centered-and-cropped" width="200" height="100"/>
                         </div>
                     </div>
                     <div class="card text-right">
-                        <button type="submit" class="btn btn-success">ยืนยัน</button>
+                        <button type="submit" class="btn btn-success">อัพโหลดภาพปกใหม่</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edit profile picture -->
+<div class="modal fade" id="profilepicModal" tabindex="-1" role="dialog" aria-labelledby="profilepicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profilepicModalLabel">เปลี่ยนภาพโปรไฟล์</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php echo form_open_multipart('upload_controller/do_uploadprofile');?>
+                    <div class="form-group">
+                        <label for="coverFile">เลือกไฟล์ภาพโปรไฟล์ (ขนาดไม่เกิน 5mb jpeg/jpg/png)</label><br>
+                        <input type="file" onchange="document.getElementById('outputprofile').src = window.URL.createObjectURL(this.files[0])" id="profilepic" name="profilepic" style="width: 250px" required></input>
+                        <div class="mt-3">
+                            <img id="outputprofile" class="centered-and-cropped" width="200" height="100"/>
+                        </div>
+                    </div>
+                    <div class="card text-right">
+                        <button type="submit" class="btn btn-success">อัพโหลดภาพโปรไฟล์ใหม่</button>
                     </div>
                 </form>
             </div>
@@ -170,6 +222,7 @@
     .coverphoto{
         position:relative;
         display:inline-block;
+        width:100%;
         height:550px;
     }
 
@@ -181,11 +234,11 @@
         transform:translate(-50%,-50%);  
     }
 
-    .coverphoto .cover-overlay{
+    .coverphoto .coveredit-overlay{
         position:absolute;
         top:10px;
         right:10px;
         /* transform:translate(-50%,-50%);   */
-    }     
+    }
 
 </style>

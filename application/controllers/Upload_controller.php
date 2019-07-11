@@ -93,7 +93,7 @@ class Upload_controller extends CI_Controller {
 
         function do_uploadcover()
         {
-                $oldfile = $this->session->userdata('usercoveroic');
+                $oldfile = $this->session->userdata('coverpic');
                 $oldpath = './uploads/cover_picture/'.$oldfile;
 
                 date_default_timezone_set("Asia/Bangkok");
@@ -108,7 +108,9 @@ class Upload_controller extends CI_Controller {
                 $config['max_size']             = 5000;
 
                 $this->load->library('upload', $config);
+
                 unlink($oldpath);
+
                 if ( ! $this->upload->do_upload('coverFile'))
                 {
                         $errortext = $this->upload->display_errors();
@@ -127,7 +129,51 @@ class Upload_controller extends CI_Controller {
                         $filename = $upload_data['file_name'];
 
                         $this->load->model('upload_model');
-                        $this->upload_model->uploadcoverfile($filename);
+                        $this->upload_model->uploadcover($filename);
+
+                        redirect(site_url('profile_controller'));
+                }
+        }
+
+        function do_uploadprofile()
+        {
+                $oldfile = $this->session->userdata('profilepic');
+                $oldpath = './uploads/profile_picture/'.$oldfile;
+
+                date_default_timezone_set("Asia/Bangkok");
+                $u_id = $this->session->userdata('userid');
+                $u_name = $this->session->userdata('name');
+                $newfilename = $u_id.$u_name.'profilepic'.date("Ymd_").date("HisA");
+                $newfilename2 = preg_replace('/\s+/','',$newfilename);
+                
+                $config['file_name']            = $newfilename2;
+                $config['upload_path']          = './uploads/profile_picture/';
+                $config['allowed_types']        = 'jpeg|jpg|png';
+                $config['max_size']             = 5000;
+
+                $this->load->library('upload', $config);
+
+                unlink($oldpath);
+
+                if ( ! $this->upload->do_upload('profilepic'))
+                {
+                        $errortext = $this->upload->display_errors();
+                        $replace_order = array('<p>', '</p>');
+                        $error = str_replace($replace_order, '', $errortext);
+                        $urlpath = 'profile_controller/witherror/'.$error;
+
+                        // echo $urlpath;
+                        //redirect(site_url('profile_controller/witherror/'.$text['error']));
+                        redirect(site_url($urlpath));
+                }
+                else
+                {
+                        $upload_data = $this->upload->data();
+
+                        $filename = $upload_data['file_name'];
+
+                        $this->load->model('upload_model');
+                        $this->upload_model->uploadprofile($filename);
 
                         redirect(site_url('profile_controller'));
                 }

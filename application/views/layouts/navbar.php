@@ -9,92 +9,94 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <ul class="navbar-nav mr-auto">
+    <!-- <ul class="navbar-nav">
       <li class="nav-item">
-        <!-- <a class="nav-link" href="<?php //echo site_url('story_controller') ?>">Story</a> -->
-      </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link" href="<?php //echo site_url('photographer_controller') ?>">Photographer</a> -->
-      </li>
-    </ul>
-    
-    <div class="dropdown-divider"></div>
-    <ul class="navbar-nav mr-auto">
-      <li class="navbar-brand">
-        <i class="fas fa-search"></i>
+        <a class="nav-link" href="<?php //echo site_url('story_controller') ?>">Story</a>
       </li>
       <li class="nav-item">
-        <?php $this->load->view('layouts/searchbar_view'); ?>
+        <a class="nav-link" href="<?php //echo site_url('photographer_controller') ?>">Photographer</a>
       </li>
-    </ul>
-    <div class="dropdown-divider"></div>
+    </ul> -->
 
-    <div class="form-inline my-2 my-lg-0">
+    <!-- <div class="form-inline"> -->
+      <div class="dropdown-divider"></div>
+        <ul class="navbar-nav col">
+          <div class="form-inline mx-auto">
+            <li class="navbar-brand">
+              <i class="fas fa-search"></i>
+            </li>
+            <li class="nav-item">
+              <?php $this->load->view('layouts/searchbar_view'); ?>
+            </li>
+          </div>
+        </ul>
+      <div class="dropdown-divider"></div>
+    <!-- </div> -->
+    
+    <?php if($this->session->userdata('email') != '')
+    { ?>
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('profile_controller') ?>"><?php echo $this->session->userdata('email') ?></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="btn btn-outline-success" href="<?php echo site_url('upload_controller') ?>">อัพโหลดรูปภาพ</a>
+      </li>
+
+      <?php if($this->session->userdata('statusid') == '1')
+      { ?>
       
-      <?php if($this->session->userdata('email') != '')
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin_controller/user_manage') ?>">User Manage</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin_controller/photo_manage') ?>">Photo Manage</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">#####</a>
+        </div>
+      </li>
+
+      <?php }elseif($this->session->userdata('statusid') == '2')
       { ?>
 
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('profile_controller') ?>"><?php echo $this->session->userdata('email') ?></a>
-        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?php echo site_url('photographer_controller/manage_photo') ?>">Photo Manage</a>
+          <a class="dropdown-item" href="<?php echo site_url('upload_controller') ?>">Upload</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">#####</a>
+        </div>
+      </li>
 
-        <li class="nav-item">
-          <a class="btn btn-outline-success" href="<?php echo site_url('upload_controller') ?>">อัพโหลดรูปภาพ</a>
-        </li>
+      <?php } ?>  
 
-        <?php if($this->session->userdata('statusid') == '1')
-        { ?>
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Admin
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin_controller/user_manage') ?>">User Manage</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin_controller/photo_manage') ?>">Photo Manage</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">#####</a>
-          </div>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">ออกจากระบบ</a>
+      </li>
+    </ul>
 
-        <?php }elseif($this->session->userdata('statusid') == '2')
-        { ?>
+    <?php }else{ ?>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Manage
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('photographer_controller/manage_photo') ?>">Photo Manage</a>
-            <a class="dropdown-item" href="<?php echo site_url('upload_controller') ?>">Upload</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">#####</a>
-          </div>
-        </li>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('userregister_controller') ?>">สมัครสมาชิก</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">เข้าสู่ระบบ</a>
+      </li>
+    </ul>
 
-        <?php } ?>  
+    <?php } ?>
 
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">ออกจากระบบ</a>
-        </li>
-      </ul>
-
-      <?php }else{ ?>
-
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('userregister_controller') ?>">สมัครสมาชิก</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('userlogin_controller') ?>">เข้าสู่ระบบ</a>
-        </li>
-      </ul>
-
-      <?php } ?>
-
-    </div>
+    
   </div>
 </nav>
 

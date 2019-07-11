@@ -15,10 +15,18 @@ class Upload_model extends CI_Model
         $this->db->insert('pictures', $data);
     }
 
-    function uploadcoverfile($filename)
+    function uploadcover($filename)
     {
         $userid = $this->session->userdata('userid');
         $this->db->set('u_coverpic', $filename);
+        $this->db->where('u_id', $userid);
+        $this->db->update('users');
+    }
+
+    function uploadprofile($filename)
+    {
+        $userid = $this->session->userdata('userid');
+        $this->db->set('u_profilepic', $filename);
         $this->db->where('u_id', $userid);
         $this->db->update('users');
     }
