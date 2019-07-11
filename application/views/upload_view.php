@@ -26,7 +26,10 @@
                         <?php echo form_open_multipart('upload_controller/upload_validation');?>
                             <div class="form-group">
                                 <label for="picFile">เลือกไฟล์ภาพ (ขนาดไม่เกิน 5mb jpeg/jpg/png)</label><br>
-                                <input type="file" id="picFile" name="picFile" style="width: 250px" required></input>
+                                <input type="file" onchange="document.getElementById('outputupload').src = window.URL.createObjectURL(this.files[0])" id="picFile" name="picFile" style="width: 250px" required></input>
+                                <div class="mt-3">
+                                    <img id="outputupload" class="centered-and-cropped" width="200" height="150"/>
+                                </div>
                             </div>
                             <!-- <label>เลือกไฟล์ภาพ (ขนาดไม่เกิน 5mb jpeg/jpg/png)</label>
                             <div class="input-group mb-3">
@@ -54,7 +57,6 @@
                                 <button type="submit" class="btn btn-success">อัพโหลด</button>
                             </div>                    
                         </form>
-
                     </div>
                 </div>
             </div>

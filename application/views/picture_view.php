@@ -105,29 +105,24 @@
                     <blockquote class="blockquote mb-0 card-body">
                     <p>" <?php echo $row->pc_detail ?> "</p>
                     <footer class="blockquote-footer">
+                        <a href="<?php echo site_url('profile_controller/photographer_profile/'.$row->u_id) ?>">
                         <small class="text-muted">
                             <cite title="Source Title"><?php echo $row->u_name ?></cite>
-                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $row->u_profilepic ?>" class="centered-and-cropped rounded-circle" width="30" height="30">
+                            <!-- user picture -->
+                            <?php if($row->u_profilepic != ''){ ?>
+                                <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $row->u_profilepic ?>" class="centered-and-cropped rounded-circle" width="30" height="30">
+                            <?php }else{ ?>
+                                <img src="https://via.placeholder.com/2000?text=Replace+with+profile+picture+." class="centered-and-cropped rounded-circle" width="30" height="30">
+                            <?php } ?>    
                         </small>
+                        </a>
                     </footer>
                     </blockquote> 
                 </div>          
 
                 <?php         
                     }
-                ?>    
-                <div class="card text-center">
-                    <blockquote class="blockquote mb-0 card-body">
-                    <p>" ใช้เพื่อการศึกษา "</p>
-                    <footer class="blockquote-footer">
-                        <small class="text-muted">
-                            <cite title="Source Title"><?php echo $uname ?></cite>
-                            <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $upic ?>" class="centered-and-cropped rounded-circle" width="30" height="30">
-                        </small>
-                    </footer>
-                    </blockquote> 
-                </div>  
-                
+                ?>      
             </div>
         </div>  
     </div>    

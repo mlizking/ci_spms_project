@@ -8,7 +8,7 @@
 <body class="pageheight">
 
     <?php $this->load->view('layouts/navbar'); ?>
-
+    
     <div class="container text-center"><?php echo $error;?></div>
 
     <?php

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2019 at 11:36 AM
+-- Generation Time: Jul 11, 2019 at 09:34 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -58,7 +58,9 @@ INSERT INTO `permissioncomment` (`pc_id`, `pc_detail`, `p_id`, `u_id`, `pc_creat
 (3, 'สวยมากเลย ขอนำไปใช้เป็นภาพประกอบในหนังสือนะคะ', 3, 17, '2019-07-02 07:11:38', '0000-00-00 00:00:00'),
 (4, 'นำไปใช้ในสื่อการเรียนการสอนครับ', 67, 4, '2019-07-02 07:11:38', '0000-00-00 00:00:00'),
 (5, 'ขอนำไปใช้เป็นภาพประกอบสไลด์นำเสนอนะครับ', 67, 18, '2019-07-02 07:15:17', '0000-00-00 00:00:00'),
-(6, 'ขอนำไปใช้ประกอบการวาดภาพนะครับ', 49, 18, '2019-07-02 07:28:03', '0000-00-00 00:00:00');
+(6, 'ขอนำไปใช้ประกอบการวาดภาพนะครับ', 49, 18, '2019-07-02 07:28:03', '0000-00-00 00:00:00'),
+(7, 'งดงาม', 67, 20, '2019-07-11 17:01:47', '0000-00-00 00:00:00'),
+(8, 'สวยนะ', 73, 20, '2019-07-11 17:03:45', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -143,7 +145,13 @@ INSERT INTO `pictures` (`p_id`, `p_name`, `p_filename`, `p_detail`, `p_tag`, `u_
 (67, 'Whisky', '3PimchanokKongdee20190627_211848PM.jpg', 'Whisky in glass', 'drink,whisky,glass,spms', 3, '2019-06-27 14:18:48', '2019-07-02 02:25:55'),
 (68, 'No rain No glow', '18กีรติรักษ์มณี20190703_153345PM.jpg', 'Espresso with orange juice', 'coffee,drink,espresso,orange juice', 18, '2019-07-03 08:33:45', '0000-00-00 00:00:00'),
 (69, 'จุ้ง', '18กีรติรักษ์มณี20190703_162624PM.jpg', 'จุ้ง เยอะแยะเลย', 'shrimp,food,water,บ่อกุ้ง,กระทะร้อน', 18, '2019-07-03 09:26:24', '2019-07-03 09:32:18'),
-(70, 'laptop', '3PimchanokKongdee20190708_162531PM.jpg', 'laptop ของ กีรติ', 'laptop,pc,คอมพิวเตอร์,university', 3, '2019-07-08 09:25:31', '0000-00-00 00:00:00');
+(70, 'laptop', '3PimchanokKongdee20190708_162531PM.jpg', 'laptop ของ กีรติ', 'laptop,pc,คอมพิวเตอร์,university', 3, '2019-07-08 09:25:31', '0000-00-00 00:00:00'),
+(71, 'sunrise', '20SeventySeven20190711_223217PM.jpg', 'พระอาทิตย์ขึ้นที่เขาค้อ', 'sun,sunrise,mountain,cloud,fog,hill,landscape', 20, '2019-07-11 15:32:17', '0000-00-00 00:00:00'),
+(72, 'ภูเขาและสายหมอก', '20SeventySeven20190711_223434PM.jpg', 'ถ่ายที่เขาค้อ', 'bw,black and white,landscape,mountain,fog,hill', 20, '2019-07-11 15:34:34', '0000-00-00 00:00:00'),
+(73, 'กังหันสีดำ', '20SeventySeven20190711_235200PM.jpg', 'กังหันลม ที่ทุ่งกังหันลม', 'windmill,sky,bw,black and white,sillhouette', 20, '2019-07-11 16:52:00', '0000-00-00 00:00:00'),
+(74, 'Dino', '20SeventySeven20190712_005354AM.jpg', 'dino', 'dino', 20, '2019-07-11 17:53:54', '0000-00-00 00:00:00'),
+(75, 'bw', '20SeventySeven20190712_005949AM.jpg', 'bw', 'bw', 20, '2019-07-11 17:59:49', '0000-00-00 00:00:00'),
+(78, 'KBLACK', '20SeventySeven20190712_023103AM.jpg', 'keerati', 'bw,black and white', 20, '2019-07-11 19:31:03', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -170,7 +178,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`u_id`, `u_email`, `u_password`, `u_name`, `u_address`, `u_profilepic`, `u_coverpic`, `us_id`, `u_createtime`, `u_updatetime`) VALUES
 (1, 'kkkk@kkkk.com', '1234qwer', 'Ali Ababwa', 'แก้ไขที่อยู่', 'admin.jpg', '1AliAbabwacoverpic20190711_123740PM.jpg', 1, '2019-06-03 18:18:05', '2019-07-11 05:37:40'),
-(3, 'qqqq@qqqq.com', '1234qwer', 'Pimchanok Kongdee', 'แก้ไขที่อยู่', 'pim.jpg', '', 2, '2019-06-04 14:21:30', '2019-07-09 07:47:20'),
+(3, 'qqqq@qqqq.com', '1234qwer', 'Pimchanok Kongdee', 'แก้ไขที่อยู่', 'pim.jpg', '3PimchanokKongdeecoverpic20190712_001058AM.jpg', 2, '2019-06-04 14:21:30', '2019-07-11 17:10:58'),
 (4, 'king@king.com', '12341234', 'king king', 'แก้ไขที่อยู่', '', '', 3, '2019-06-05 09:20:40', '2019-07-09 08:05:36'),
 (7, 'Levi@Levi.gg', '12341234', 'Levi Banks', 'แก้ไขที่อยู่', '', '', 3, '2019-06-06 18:19:48', '2019-07-09 08:05:36'),
 (8, 'Ty@Wilkes.gg', '12341234', 'Ty Wilkes', 'แก้ไขที่อยู่', '', '', 3, '2019-06-07 10:39:02', '2019-07-09 08:05:36'),
@@ -243,13 +251,13 @@ ALTER TABLE `userstatus`
 -- AUTO_INCREMENT for table `permissioncomment`
 --
 ALTER TABLE `permissioncomment`
-  MODIFY `pc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `users`
