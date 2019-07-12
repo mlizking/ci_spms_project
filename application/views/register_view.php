@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="Name">ชื่อ-นามสกุล</label>
                         <input type="text" class="form-control" name="registername" id="Name" placeholder="กรอกชื่อ-นามสกุลที่นี่" value="<?php echo set_value('registername'); ?>" required>
-                        <?php //echo form_error('loginemail'); ?>
+                        <?php echo form_error('registername'); ?>
                     </div>
                     <div class="form-group">
                         <label for="Email">อีเมล</label>

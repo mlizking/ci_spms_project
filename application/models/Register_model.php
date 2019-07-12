@@ -14,6 +14,7 @@ class Register_model extends CI_Model
             'u_password' => $password,
             'u_name' => $fullname,
             'u_address' => 'แก้ไขที่อยู่',
+            'u_tel' => 'แก้ไขเบอร์โทร',
             'us_id' => 3
         );
         $this->db->insert('users', $data);

@@ -75,7 +75,31 @@
                             <a class="text-dark" href="<?php echo site_url('profile_controller/photographer_profile/'.$uid) ?>">
                                 <h5 class="modal-title"><?php echo $uname ?></h5>
                             </a>
-                            <button type="button" class="btn btn-outline-info mt-2">follow</button>
+                            <?php if($this->session->userdata('userid') != $uid){ ?>
+                                <?php
+                                    $ufid = $this->session->userdata('userid');
+                                    $fuid = $uid;
+                                    $CI =& get_instance();
+                                    $CI->load->model('follow_model');
+                                    $data['follow'] = $CI->follow_model->select_data($ufid, $fuid);
+                                    if($data['follow']->num_rows() == 1)
+                                    {
+                                        ?>
+                                            <?php echo form_open('Photographer_controller/unfollow/'.$fuid); ?>
+                                                <button type="submit" class="btn btn-outline-info mt-2 active">กำลังติดตาม</button>
+                                            </form>
+                                        <?php
+                                    }
+                                    elseif($data['follow']->num_rows() == 0)
+                                    {
+                                        ?>
+                                            <?php echo form_open('Photographer_controller/follow/'.$fuid); ?>
+                                                <button type="submit" class="btn btn-outline-info mt-2">ติดตาม</button>
+                                            </form>
+                                        <?php
+                                    }
+                                ?>
+                            <?php } ?>
                         </div>
                     </div>   
                 </div>

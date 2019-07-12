@@ -25,6 +25,7 @@
                 $name = $row->u_name;
                 $status = $row->us_name;
                 $address = $row->u_address;
+                $tel = $row->u_tel;
     ?>
 
                 <div class="coverphoto">
@@ -39,8 +40,8 @@
                         </div>
                     </div>
 
-                    <div class="profile-overlay">
-                        <div class="container text-center">
+                    <div class="profile-overlay text-center">
+                        <!-- <div class="container text-center"> -->
                         <div class="img-container">
 
                             <!-- profile picture -->
@@ -62,7 +63,7 @@
                             <?php } ?>
 
                         </div>        
-                        </div>
+                        <!-- </div> -->
                     </div>
 
                     <?php if($this->session->userdata('userid') == $id){ ?>
@@ -75,10 +76,39 @@
                 
                 <div class="container-fluid text-center">
                     <h1><?php echo $name ?></h1>
-                    <h5><i class="fas fa-map-marker-alt"></i> <?=$address?></h5>
+                    <h5><i class="fas fa-map-marker-alt"></i> <?= $address ?></h5>
+                    <h5><i class="fas fa-phone-alt"></i> <?= $tel ?></h5>
+
+                    <!-- edit profile and follow button -->
                     <?php if($this->session->userdata('userid') == $id){ ?>
-                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editprofileModal">แก้ไขข้อมูลผู้ใช้</button> 
+                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#profiledataModal">แก้ไขข้อมูลผู้ใช้</button> 
+                    <?php }else{ ?>
+                        <?php
+                            $uid = $this->session->userdata('userid');
+                            $fuid = $id;
+                            $CI =& get_instance();
+                            $CI->load->model('follow_model');
+                            $data['follow'] = $CI->follow_model->select_data($uid, $fuid);
+                            if($data['follow']->num_rows() == 1)
+                            {
+                                ?>
+                                    <?php echo form_open('Photographer_controller/unfollow/'.$fuid); ?>
+                                        <button type="submit" class="btn btn-outline-info mt-2 active">กำลังติดตาม</button>
+                                    </form>
+                                <?php
+                            }
+                            elseif($data['follow']->num_rows() == 0)
+                            {
+                                ?>
+                                    <?php echo form_open('Photographer_controller/follow/'.$fuid); ?>
+                                        <button type="submit" class="btn btn-outline-info mt-2">ติดตาม</button>
+                                    </form>
+                                <?php
+                            }
+                        ?>
+                        
                     <?php } ?>
+
                     <div class="row mt-5">
                         <div class="col">
                             <h5><i class="fas fa-eye"></i> 100k</h5>
@@ -87,7 +117,7 @@
                             <h5><i class="fas fa-file-download"></i> 100k</h5>
                         </div>
                         <div class="col">
-                            <h5><i class="fas fa-user-friends"></i> 100k</h5>
+                            <h5><i class="fas fa-user-friends"></i> <?php echo $followcount->num_rows() ?></h5>
                         </div>
                     </div>
                 </div>
@@ -208,6 +238,44 @@
     </div>
 </div>
 
+<!-- Modal edit profile data -->
+<div class="modal fade" id="profiledataModal" tabindex="-1" role="dialog" aria-labelledby="profiledataModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profiledataModalLabel">แก้ไขข้อมูลส่วนตัว</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php echo form_open('profile_controller/update_data'); ?> 
+                <!-- Form -->
+                    <div class="form-group">
+                        <label for="editname">ชื่อ-นามสกุล</label>
+                        <input type="text" class="form-control" name="editname" id="editname" placeholder="กรอกชื่อ-นามสกุลที่นี่" value="<?php echo $name ?>" required>
+                        <?php echo form_error('editname'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="editaddress">ที่อยู่</label>
+                        <input type="text" class="form-control" name="editaddress" id="editaddress" placeholder="กรอกที่อยู่ที่นี่" value="<?php echo $address ?>" required>
+                        <?php echo form_error('editaddress'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="edittel">เบอร์โทรศัพท์</label>
+                        <input type="text" class="form-control" name="edittel" id="edittel" placeholder="กรอกเบอร์โทรศัพท์ที่นี่" value="<?php echo $tel ?>" required>
+                        <?php echo form_error('edittel'); ?>
+                    </div>
+                    <!-- <p class="mb-2"><?php //echo $this->session->flashdata("error"); ?></p> -->
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success">ยืนยันการแก้ไข</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     <?php $this->load->view('layouts/footer'); ?>
     <?php $this->load->view('layouts/script_body'); ?>
 </body>
@@ -228,7 +296,7 @@
 
     .coverphoto .profile-overlay{
         position:absolute;
-        width:90%;
+        width:300px;
         top:70%;
         left:50%;
         transform:translate(-50%,-50%);  

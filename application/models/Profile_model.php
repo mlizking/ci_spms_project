@@ -24,6 +24,18 @@ class Profile_model extends CI_Model
         $this->db->where('pictures.u_id', $uid);
         $query = $this->db->get('pictures');
         return $query;
+    }
 
+    function updateprofile_data($fullname, $address, $tel)
+    {
+        $id = $this->session->userdata('userid');
+        $data = array(
+            'u_name' => $fullname,
+            'u_address' => $address,
+            'u_tel' => $tel
+        );
+
+        $this->db->where('u_id', $id);
+        $this->db->update('users', $data);
     }
 }

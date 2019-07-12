@@ -66,4 +66,24 @@ class Photographer_controller extends CI_Controller {
             //echo $pid.' + '.$this->input->post('editname');
                 
         }
+
+        function follow($fuid)
+        {
+                $uid = $this->session->userdata('userid');
+                
+                $this->load->model('follow_model');
+                $this->follow_model->set_follow($uid, $fuid);
+                
+                redirect(site_url('profile_controller/photographer_profile/'.$fuid));
+        }
+
+        function unfollow($fuid)
+        {
+                $uid = $this->session->userdata('userid');
+                
+                $this->load->model('follow_model');
+                $this->follow_model->unset_follow($uid, $fuid);
+                
+                redirect(site_url('profile_controller/photographer_profile/'.$fuid));
+        }
 }
