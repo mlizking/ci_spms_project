@@ -26,7 +26,7 @@
     <?php $this->load->view('layouts/navbar'); ?>
   
     <div class="container-fluid">
-        <div class="row justify-content-center mt-3">
+        <div class="row justify-content-center">
             <style>
                 .img-fluid{
                     max-width: 100%;

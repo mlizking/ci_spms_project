@@ -23,12 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
 // $config['base_url'] = 'http://127.0.0.1/ci_spms_project/';
 // $config['base_url'] = 'http://192.168.137.1/ci_spms_project/';
-$config['base_url'] = 'http://10.33.12.25/ci_spms_project/';
+// $config['base_url'] = 'http://10.33.12.25/ci_spms_project/';
 // $config['base_url'] = 'http://192.168.1.244/ci_spms_project/';
 // $config['base_url'] = 'http://192.168.1.102/ci_spms_project/';
-
+$config['base_url'] = 'http://192.168.1.111/ci_spms_project/';
 
 /*
 |--------------------------------------------------------------------------
