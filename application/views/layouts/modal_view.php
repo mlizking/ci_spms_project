@@ -28,7 +28,45 @@
                             <span><h1>SPMS&copy;</h1></span>
                         </div>
                     </a>
+                    <?php
+                        $uid = $this->session->userdata('userid');
+                        $pid = $id;
+                        $CI =& get_instance();
+                        $CI->load->model('picture_model');
+                        $data['like'] = $CI->picture_model->select_like($pid);
+                        $piclike = $data['like']->num_rows();
+                        $liked = 0;
+                        foreach($data['like']->result() as $row){
+                            if($uid == $row->u_id){
+                                $liked++;                                    
+                            }
+                        }
+                        
+                        if($liked == 1)
+                        {
+                    ?>
+                            <div class="like4" onclick="window.location='<?php echo site_url('picture_controller/unlike_picture/'.$pid); ?>'">                                             
+                                <i class="fab fa-gratipay fa-2x"> <?php echo $piclike ?></i>                                  
+                            </div>
+                    <?php
+                        }
+                        else
+                        {
+                    ?>
+                            <div class="like3" onclick="window.location='<?php echo site_url('picture_controller/like_picture/'.$pid); ?>'">                                             
+                                <i class="fab fa-gratipay fa-2x"> <?php echo $piclike ?></i>                                  
+                            </div>
+                    <?php
+                        }
+                    ?>  
                 </div>
+
+                <?php if($this->session->userdata('userid') == $userid){ ?>
+                    <div class="edit mt-3" onclick="window.location='<?php echo site_url('picture_controller/edit_picture/'.$id); ?>'">                                             
+                        <i class="fas fa-edit fa-2x"></i>                                 
+                    </div> 
+                <?php } ?>  
+
                 <div class="container mt-3">
                     <?php 
                     foreach ($ptag as $value) {

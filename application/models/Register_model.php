@@ -13,8 +13,8 @@ class Register_model extends CI_Model
             'u_email' => $email,
             'u_password' => $password,
             'u_name' => $fullname,
-            'u_address' => 'แก้ไขที่อยู่',
-            'u_tel' => 'แก้ไขเบอร์โทร',
+            'u_address' => 'ไม่มีข้อมูล',
+            'u_tel' => 'ไม่มีข้อมูล',
             'us_id' => 3
         );
         $this->db->insert('users', $data);

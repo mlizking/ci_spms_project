@@ -109,15 +109,27 @@
                         
                     <?php } ?>
 
+                    <?php
+                        $allview = 0;
+                        $alldownload = 0;
+                        foreach ($pictureview->result() as $row){
+                            $allview = $allview + $row->p_view;
+                            $alldownload = $alldownload + $row->p_download;
+                        }
+                    ?>            
+
                     <div class="row mt-5">
                         <div class="col">
-                            <h5><i class="fas fa-eye"></i> 100k</h5>
+                            <h4><i class="fas fa-eye" style="color:#43D8D8"></i><br> <?php echo $allview ?></h4>
                         </div>
                         <div class="col">
-                            <h5><i class="fas fa-file-download"></i> 100k</h5>
+                            <h4><i class="fab fa-gratipay" style="color:#D84343"></i><br> <?php echo $picturelike->num_rows() ?></h4>
                         </div>
                         <div class="col">
-                            <h5><i class="fas fa-user-friends"></i> <?php echo $followcount->num_rows() ?></h5>
+                            <h4><i class="fas fa-file-download" style="color:#8DD843"></i><br> <?php echo $alldownload ?></h4>
+                        </div>
+                        <div class="col">
+                            <h4><i class="fas fa-user-friends" style="color:#8D43D8"></i><br> <?php echo $followcount->num_rows() ?></h4>
                         </div>
                     </div>
                 </div>
@@ -129,6 +141,7 @@
                         if($fetch_data->num_rows() > 0)
                         {
                             foreach ($fetch_data->result() as $row) {
+                                $userid = $row->u_id;
                             
                                 $filename = $row->p_filename;
                                 $picname = $row->p_name;
@@ -142,6 +155,7 @@
                                 $upic = $row->u_profilepic;
 
                                 $passdatahome = array(
+                                'userid' => $userid,
                                 'id' => $id, 
                                 'filename' => $filename, 
                                 'picname' => $picname, 
@@ -153,10 +167,73 @@
                         ?>
                                 <div class="card">
                                 <div class="img-container">
+                                    <?php if($this->session->userdata('userid') == $userid){ ?>
+                                        <div class="edit" onclick="window.location='<?php echo site_url('picture_controller/edit_picture/'.$id); ?>'">                                             
+                                            <i class="fas fa-edit"></i>                                 
+                                        </div> 
+                                        <div class="delete" data-toggle="modal" data-target="#deleteModal<?php echo $id ?>">                                             
+                                            <i class="fas fa-trash-alt"></i>                                 
+                                        </div>
+                                        <!-- Delete Modal -->
+                                        <div class="modal fade" id="deleteModal<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header text-dark mx-auto">
+                                                        <h3>คุณต้องการลบ "<?php echo $picname ?>" ?</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="img-container">
+                                                            <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image">
+                                                            <div class="overlay">
+                                                            <span><h1>SPMS&copy;</h1></span>
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+                                                    <div class="modal-footer mx-auto">
+                                                        <a href="<?php echo site_url('picture_controller/delete_picture/'.$id); ?>">
+                                                            <button type="button" class="btn btn-success">Yes</button>
+                                                        </a>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    <?php } ?>  
                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
                                     <div class="overlay text-center" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
                                         <span><h1><?php echo $picname ?></h1></span>
                                     </div>
+                                    <?php
+                                        $uid = $this->session->userdata('userid');
+                                        $pid = $id;
+                                        $CI =& get_instance();
+                                        $CI->load->model('picture_model');
+                                        $data['like'] = $CI->picture_model->select_like($pid);
+                                        $piclike = $data['like']->num_rows();
+                                        $liked = 0;
+                                        foreach($data['like']->result() as $row){
+                                            if($uid == $row->u_id){
+                                                $liked++;                                    
+                                            }
+                                        }
+                                        
+                                        if($liked == 1)
+                                        {
+                                    ?>
+                                            <div class="like2" onclick="window.location='<?php echo site_url('picture_controller/unlike_picture/'.$pid); ?>'">                                             
+                                                <i class="fab fa-gratipay fa-1x"> <?php echo $piclike ?></i>                                  
+                                            </div>
+                                    <?php
+                                        }
+                                        else
+                                        {
+                                    ?>
+                                            <div class="like1" onclick="window.location='<?php echo site_url('picture_controller/like_picture/'.$pid); ?>'">                                             
+                                                <i class="fab fa-gratipay fa-1x"> <?php echo $piclike ?></i>                                  
+                                            </div>
+                                    <?php
+                                        }
+                                    ?>  
                                 </div>
                                 </div>
 

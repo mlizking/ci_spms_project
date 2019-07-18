@@ -12,6 +12,10 @@ class Profile_controller extends CI_Controller {
             $this->load->model('follow_model');
             $data['followcount'] = $this->follow_model->follower_count($uid);
 
+            $this->load->model('picture_model');
+            $data['pictureview'] = $this->picture_model->select_pview($uid);
+            $data['picturelike'] = $this->picture_model->select_plike($uid);
+
             $data['error'] = '';
             
             $this->load->view('userprofile_view', $data);
@@ -30,6 +34,10 @@ class Profile_controller extends CI_Controller {
 
             $this->load->model('follow_model');
             $data['followcount'] = $this->follow_model->follower_count($uid);
+
+            $this->load->model('picture_model');
+            $data['pictureview'] = $this->picture_model->select_pview($uid);
+            $data['picturelike'] = $this->picture_model->select_plike($uid);
 
             $data['error'] = str_replace('%20', ' ', $error);
 
@@ -57,6 +65,10 @@ class Profile_controller extends CI_Controller {
 
             $this->load->model('follow_model');
             $data['followcount'] = $this->follow_model->follower_count($uid);
+
+            $this->load->model('picture_model');
+            $data['pictureview'] = $this->picture_model->select_pview($uid);
+            $data['picturelike'] = $this->picture_model->select_plike($uid);
 
             $data['error'] = '';
 

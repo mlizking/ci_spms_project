@@ -53,6 +53,37 @@
                       <div class="overlay text-center" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
                           <span><h1><?php echo $picname ?></h1></span>
                       </div>
+                      <?php
+                          $uid = $this->session->userdata('userid');
+                          $pid = $id;
+                          $CI =& get_instance();
+                          $CI->load->model('picture_model');
+                          $data['like'] = $CI->picture_model->select_like($pid);
+                          $piclike = $data['like']->num_rows();
+                          $liked = 0;
+                          foreach($data['like']->result() as $row){
+                              if($uid == $row->u_id){
+                                  $liked++;                                    
+                              }
+                          }
+                          
+                          if($liked == 1)
+                          {
+                      ?>
+                              <div class="like2" onclick="window.location='<?php echo site_url('picture_controller/unlike_picture/'.$pid); ?>'">                                             
+                                  <i class="fab fa-gratipay fa-1x"> <?php echo $piclike ?></i>                                  
+                              </div>
+                      <?php
+                          }
+                          else
+                          {
+                      ?>
+                              <div class="like1" onclick="window.location='<?php echo site_url('picture_controller/like_picture/'.$pid); ?>'">                                             
+                                  <i class="fab fa-gratipay fa-1x"> <?php echo $piclike ?></i>                                  
+                              </div>
+                      <?php
+                          }
+                      ?>  
                     </div>
                     </div>
 

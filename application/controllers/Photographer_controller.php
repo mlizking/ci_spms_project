@@ -69,6 +69,10 @@ class Photographer_controller extends CI_Controller {
 
         function follow($fuid)
         {
+                if($this->session->userdata('userid') == ''){
+                        $this->session->set_flashdata('error', 'กรุณาเข้าสู่ระบบ !!');
+                        redirect(site_url('userlogin_controller'));
+                }
                 $uid = $this->session->userdata('userid');
                 
                 $this->load->model('follow_model');

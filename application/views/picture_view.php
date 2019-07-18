@@ -14,6 +14,8 @@
             $tag = $row->p_tag;
             $pictag = explode(",",$tag);
 
+            $pview = $row->p_view;
+
             $uid = $row->u_id;
             $uname = $row->u_name;
             $upic = $row->u_profilepic;   
@@ -25,6 +27,12 @@
 <body>
     <?php $this->load->view('layouts/navbar'); ?>
   
+    <?php
+        $CI =& get_instance();
+        $CI->load->model('picture_model');
+        $CI->picture_model->update_pview($picid, $pview);
+    ?>
+
     <div class="container-fluid">
         <div class="row justify-content-center">
             <style>
@@ -38,11 +46,50 @@
                 <div class="overlay text-center">
                     <span><h1><?php echo $picname ?></h1></span>
                 </div>
+                <?php
+                    $ulid = $this->session->userdata('userid');
+                    $pid = $picid;
+                    $CI =& get_instance();
+                    $CI->load->model('picture_model');
+                    $data['like'] = $CI->picture_model->select_like($pid);
+                    $piclike = $data['like']->num_rows();
+                    $liked = 0;
+                    foreach($data['like']->result() as $row){
+                        if($ulid == $row->u_id){
+                            $liked++;                                    
+                        }
+                    }
+                    
+                    if($liked == 1)
+                    {
+                ?>
+                        <div class="like4" onclick="window.location='<?php echo site_url('picture_controller/unlike_picture/'.$pid); ?>'">                                             
+                            <i class="fab fa-gratipay fa-2x"> <?php echo $piclike ?></i>                                  
+                        </div>
+                <?php
+                    }
+                    else
+                    {
+                ?>
+                        <div class="like3" onclick="window.location='<?php echo site_url('picture_controller/like_picture/'.$pid); ?>'">                                             
+                            <i class="fab fa-gratipay fa-2x"> <?php echo $piclike ?></i>                                  
+                        </div>
+                <?php
+                    }
+                ?>  
             </div>
         </div>
     </div>
 
-    <div class="container-fluid mx-auto mt-3">                 
+    <div class="container-fluid text-center">
+        <?php if($this->session->userdata('userid') == $uid){ ?>
+            <div class="edit mt-3" onclick="window.location='<?php echo site_url('picture_controller/edit_picture/'.$picid); ?>'">                                             
+                <i class="fas fa-edit fa-2x"></i>                                 
+            </div> 
+        <?php } ?>  
+    </div>
+
+    <div class="container-fluid mx-auto mt-3"> 
         <div class="card-columns">
              <div class="card">
                 <h5 class="card-header">คำอธิบายรูปภาพ</h5>
@@ -154,7 +201,7 @@
     <!-- Download button -->
     <div class="container mt-3">
         <div class="row justify-content-center">
-            <a href="<?php echo site_url('picture_controller/picdownload/'.$filename) ?>"><button type="button" class="btn btn-success">ดาวน์โหลดภาพนี้ <i class="fas fa-file-download"></i></button></a>         
+            <a href="<?php echo site_url('picture_controller/picdownload/'.$filename.'/'.$picid) ?>"><button type="button" class="btn btn-success">ดาวน์โหลดภาพนี้ <i class="fas fa-file-download"></i></button></a>         
         </div>
     </div>
         

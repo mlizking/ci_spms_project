@@ -11,6 +11,7 @@
     <div class="carousel-inner text-center">
       
       <?php $i = 0; foreach ($random_data->result() as $row) { 
+        $cuserid = $row->u_id;
         $cfilename = $row->p_filename;
         $cpicname = $row->p_name;
         $cpdetail = $row->p_detail;
@@ -21,6 +22,7 @@
         $cupic = $row->u_profilepic;
 
         $passdatacarousel = array(
+          'userid' => $cuserid,
           'id' => $cid, 
           'filename' => $cfilename, 
           'picname' => $cpicname, 
