@@ -24,7 +24,8 @@
 
                 <?php
                 foreach ($searchdata->result() as $row) {
-                    
+                    $userid = $row->u_id;
+
                     $filename = $row->p_filename;
                     $picname = $row->p_name;
                     $pdetail = $row->p_detail;
@@ -37,6 +38,7 @@
                     $upic = $row->u_profilepic;
 
                     $passdata = array(
+                      'userid' => $userid,    
                       'id' => $id, 
                       'filename' => $filename, 
                       'picname' => $picname, 
@@ -49,6 +51,11 @@
                     ?>
                     <div class="card">
                     <div class="img-container">
+                      <?php if($this->session->userdata('userid') == $row->u_id){ ?>
+                          <div class="edit" onclick="window.location='<?php echo site_url('picture_controller/edit_picture/'.$id); ?>'">                                             
+                              <i class="fas fa-edit"></i>                                 
+                          </div> 
+                      <?php } ?>  
                       <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
                       <div class="overlay text-center" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
                           <span><h1><?php echo $picname ?></h1></span>

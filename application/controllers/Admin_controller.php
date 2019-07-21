@@ -8,6 +8,7 @@ class Admin_controller extends CI_Controller {
                 //$this->load->view('admin_dashboard_view');
                 $this->load->model('admin_model');
                 $data['fetch_data'] = $this->admin_model->fetch_user_data();
+                $data['allphoto'] = $this->admin_model->allphoto();
                 $this->load->view('admin_dashboard_view', $data);
         }
 

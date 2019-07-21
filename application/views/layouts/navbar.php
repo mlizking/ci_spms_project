@@ -56,27 +56,25 @@
           <a class="dropdown-item" href="<?php echo site_url('admin_controller') ?>">Dashboard</a>
           <a class="dropdown-item" href="<?php echo site_url('admin_controller/user_manage') ?>">User Manage</a>
           <a class="dropdown-item" href="<?php echo site_url('admin_controller/photo_manage') ?>">Photo Manage</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">#####</a>
         </div>
       </li>
 
-      <?php }elseif($this->session->userdata('statusid') == '2')
-      { ?>
+      <?php }//elseif($this->session->userdata('statusid') == '2')
+      //{ ?>
 
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo site_url('photographer_controller/manage_photo') ?>">Photo Manage</a>
-          <a class="dropdown-item" href="<?php echo site_url('upload_controller') ?>">Upload</a>
+          <a class="dropdown-item" href="<?php //echo site_url('photographer_controller/manage_photo') ?>">Photo Manage</a>
+          <a class="dropdown-item" href="<?php //echo site_url('upload_controller') ?>">Upload</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">#####</a>
         </div>
-      </li>
+      </li> -->
 
-      <?php } ?>  
+      <?php //} ?>  
 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('userlogin_controller/logout') ?>">ออกจากระบบ</a>

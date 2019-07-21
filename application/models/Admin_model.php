@@ -14,4 +14,10 @@ class admin_model extends CI_Model
         $this -> db -> where('u_id', $id);
         $this -> db -> delete('users');
     }
+
+    function allphoto()
+    {
+        $query = $this->db->get('pictures');
+        return $query;
+    }
 }

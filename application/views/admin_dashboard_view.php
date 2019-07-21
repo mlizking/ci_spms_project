@@ -15,14 +15,22 @@
   <?php $this->load->view('layouts/navbar'); ?>
 
   
-    <div class="container-fluid">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="container-fluid text-center">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
         <h1 class="h2">Dashboard</h1>
       </div>
-      <div class="card text-white bg-secondary text-center mb-3" style="max-width: 18rem;">
-        <div class="card-header">จำนวนผู้ใช้งานทั้งหมด</div>
-        <div class="card-body">
-          <h3 class="card-title"><?php echo $fetch_data->num_rows(); ?></h3>
+      <div class="row justify-content-center mt-3">
+        <div class="card text-white bg-info text-center mx-1">
+          <div class="card-header">จำนวนผู้ใช้งานทั้งหมด</div>
+          <div class="card-body">
+            <h3 class="card-title"><?php echo $fetch_data->num_rows(); ?></h3>
+          </div>
+        </div>
+        <div class="card text-white bg-success text-center mx-1">
+          <div class="card-header">จำนวนรูปภาพทั้งหมด</div>
+          <div class="card-body">
+            <h3 class="card-title"><?php echo $allphoto->num_rows(); ?></h3>
+          </div>
         </div>
       </div>
     </div>    
