@@ -40,4 +40,15 @@ class Follow_model extends CI_Model
         $query = $this->db->get('follow');
         return $query;
     }
+
+    function follower($uid)
+    {
+        $this->db->join('users', 'follow.u_id = users.u_id', 'left');
+        $wheredata = array(
+            'fu_id' => $uid
+        );
+        $this->db->where($wheredata);
+        $query = $this->db->get('follow');
+        return $query;
+    }
 }

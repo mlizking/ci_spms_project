@@ -138,120 +138,57 @@
                     </div>
                 </div>
 
-                <div class="container-fluid mt-3">
-                    <!-- Photo grid -->
-                    <div class="card-columns">
+                <div class="container-fluid">
+                        <center><h3>ผู้ติดตามทั้งหมด</h3></center>
+                        <div class="card-columns">
                         <?php
-                        if($fetch_data->num_rows() > 0)
-                        {
-                            foreach ($fetch_data->result() as $row) {
-                                $userid = $row->u_id;
-                            
-                                $filename = $row->p_filename;
-                                $picname = $row->p_name;
-                                $pdetail = $row->p_detail;
-
-                                $tag = $row->p_tag;
-                                $ptag = explode(",",$tag);
-
-                                $id = $row->p_id;
-                                $uname = $row->u_name;
-                                $upic = $row->u_profilepic;
-
-                                $passdatahome = array(
-                                'userid' => $userid,
-                                'id' => $id, 
-                                'filename' => $filename, 
-                                'picname' => $picname, 
-                                'ptag' => $ptag,
-                                'upic' => $upic,
-                                'uname' => $uname
-                                );
-                                //echo '<br>'.$filename;
+                            foreach ($follower->result() as $row) {
+                                //echo $row->u_name;
                         ?>
                                 <div class="card">
-                                <div class="img-container">
-                                    <?php if($this->session->userdata('userid') == $userid){ ?>
-                                        <div class="edit" onclick="window.location='<?php echo site_url('picture_controller/edit_picture/'.$id); ?>'">                                             
-                                            <i class="fas fa-edit"></i>                                 
-                                        </div> 
-                                        <div class="delete" data-toggle="modal" data-target="#deleteModal<?php echo $id ?>">                                             
-                                            <i class="fas fa-trash-alt"></i>                                 
-                                        </div>
-                                        <!-- Delete Modal -->
-                                        <div class="modal fade" id="deleteModal<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header text-dark mx-auto">
-                                                        <h3>คุณต้องการลบ "<?php echo $picname ?>" ?</h3>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="img-container">
-                                                            <img class="img-fluid" src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" alt="Responsive image">
-                                                            <div class="overlay">
-                                                            <span><h1>SPMS&copy;</h1></span>
-                                                            </div>
-                                                        </div>  
-                                                    </div>
-                                                    <div class="modal-footer mx-auto">
-                                                        <a href="<?php echo site_url('picture_controller/delete_picture/'.$id); ?>">
-                                                            <button type="button" class="btn btn-success">Yes</button>
-                                                        </a>
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                                                    </div>
-                                                </div>
+                                    <h5 class="card-header">ผู้ติดตาม</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-3">
+                                            <a href="<?php echo site_url('profile_controller/photographer_profile/'.$row->u_id) ?>">
+                                                <img src="<?php echo base_url(); ?>uploads/profile_picture/<?php echo $row->u_profilepic ?>" class="centered-and-cropped rounded-circle" width="100" height="100">
+                                            </a>
+                                            <div class="col my-auto">
+                                                <a class="text-dark" href="<?php echo site_url('profile_controller/photographer_profile/'.$row->u_id) ?>">
+                                                    <h5 class="modal-title"><?php echo $row->u_name ?></h5>
+                                                </a>
+                                                <?php if($this->session->userdata('userid') != $row->u_id){ ?>
+                                                    <?php
+                                                        $ufid = $this->session->userdata('userid');
+                                                        $fuid = $row->u_id;
+                                                        $CI =& get_instance();
+                                                        $CI->load->model('follow_model');
+                                                        $data['follow'] = $CI->follow_model->select_data($ufid, $fuid);
+                                                        if($data['follow']->num_rows() == 1)
+                                                        {
+                                                            ?>
+                                                                <?php echo form_open('Photographer_controller/unfollow/'.$fuid); ?>
+                                                                    <button type="submit" class="btn btn-outline-info mt-2 active">กำลังติดตาม</button>
+                                                                </form>
+                                                            <?php
+                                                        }
+                                                        elseif($data['follow']->num_rows() == 0)
+                                                        {
+                                                            ?>
+                                                                <?php echo form_open('Photographer_controller/follow/'.$fuid); ?>
+                                                                    <button type="submit" class="btn btn-outline-info mt-2">ติดตาม</button>
+                                                                </form>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                <?php } ?>
                                             </div>
-                                        </div> 
-                                    <?php } ?>  
-                                    <img src="<?php echo base_url(); ?>uploads/<?php echo $filename ?>" class="img-fluid card-img-top" alt="Responsive image">
-                                    <div class="overlay text-center" data-toggle="modal" data-target="#imgModalCenter<?php echo $id ?>"><!-- Trigger Modal -->
-                                        <span><h1><?php echo $picname ?></h1></span>
-                                    </div>
-                                    <?php
-                                        $uid = $this->session->userdata('userid');
-                                        $pid = $id;
-                                        $CI =& get_instance();
-                                        $CI->load->model('picture_model');
-                                        $data['like'] = $CI->picture_model->select_like($pid);
-                                        $piclike = $data['like']->num_rows();
-                                        $liked = 0;
-                                        foreach($data['like']->result() as $row){
-                                            if($uid == $row->u_id){
-                                                $liked++;                                    
-                                            }
-                                        }
-                                        
-                                        if($liked == 1)
-                                        {
-                                    ?>
-                                            <div class="like2" onclick="window.location='<?php echo site_url('picture_controller/unlike_picture/'.$pid); ?>'">                                             
-                                                <i class="fab fa-gratipay fa-1x"> <?php echo $piclike ?></i>                                  
-                                            </div>
-                                    <?php
-                                        }
-                                        else
-                                        {
-                                    ?>
-                                            <div class="like1" onclick="window.location='<?php echo site_url('picture_controller/like_picture/'.$pid); ?>'">                                             
-                                                <i class="fab fa-gratipay fa-1x"> <?php echo $piclike ?></i>                                  
-                                            </div>
-                                    <?php
-                                        }
-                                    ?>  
-                                </div>
-                                </div>
-
-                                <!-- Modal -->
-                                <?php
-                                $this->load->view('layouts/modal_view', $passdatahome);
-                            }
-                        }
-                        else
-                        {
-                            echo '<h3>ไม่มีรูปภาพให้แสดง</h3>';
-                        }
+                                        </div>   
+                                    </div> 
+                                </div>       
+                        <?php
+                            } 
                         ?>
-                    </div>
+                        </div>
                 </div>
 
     <?php   

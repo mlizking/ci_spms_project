@@ -75,6 +75,25 @@ class Profile_controller extends CI_Controller {
             $this->load->view('userprofile_view', $data);
         }
 
+        function photographer_profile_follower($uid)
+        {
+            $this->load->model('profile_model');
+            $data['user_data'] = $this->profile_model->selectuser_data($uid) ;
+            $data['fetch_data'] = $this->profile_model->selectuser_photo($uid);
+
+            $this->load->model('follow_model');
+            $data['followcount'] = $this->follow_model->follower_count($uid);
+            $data['follower'] = $this->follow_model->follower($uid);
+
+            $this->load->model('picture_model');
+            $data['pictureview'] = $this->picture_model->select_pview($uid);
+            $data['picturelike'] = $this->picture_model->select_plike($uid);
+
+            $data['error'] = '';
+
+            $this->load->view('userprofilefollower_view', $data);
+        }
+
         function update_data()
         {
             $this->form_validation->set_rules('editname', 

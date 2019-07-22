@@ -96,7 +96,7 @@
 
     <div class="container-fluid mx-auto mt-3"> 
         <div class="card-columns">
-             <div class="card">
+            <div class="card">
                 <h5 class="card-header">คำอธิบายรูปภาพ</h5>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
